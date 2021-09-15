@@ -6,14 +6,15 @@ output: html_notebook
 1. Задать объем выборки $N$.
 
 ```{r}
-  N = 10000
+
+  N = 1000
+
 ```
-
-
 
 2. Задать параметры
 
 ```{r}
+
   p1 = 0.1
   p2 = 0.2
   p3 = 0.7
@@ -25,6 +26,9 @@ output: html_notebook
   
   a = 0
   b = 5
+  
+  pi_1 = 1/pi
+  
 ```
 
 3 Найти аналитически для своего варианта функцию распределения F моделируемого
@@ -45,67 +49,194 @@ $E = 0.1*E_1 + 0.2*E_2 + 0.7*E_3 = 0.1*[0] + 0.2*[\frac{1}{2}] + 0.7*[\frac{0+5}
 
 3.4 Дисперсия смеси:
 
-$D[X] = E[X^2]-E^2[X] = \frac{509}{24} - \frac{31}{12}  = \frac{447}{24} = 18.625$ , где 
+$D[X] = E[X^2]-E^2[X] = 7.5081 - 4.425 = 3.0831$ , где 
 
-$E_1[X^2] = D_1[x] + E_1^2[X] = \sigma^2 + \mu^2 = 16, E_2[X^2] = D_2[x] + E_2^2[X] = \frac{1}{8} + \frac{1}{2} = \frac{5}{8}, E_3[X^2] = D_3[x] + E_3^2[X] = \frac{5}{2} + \frac{25}{12} = \frac{55}{12}$
+$E_1[X^2] = D_1[x] + E_1^2[X] = \sigma^2 + \mu^2 = 16$,
+
+$E_2[X^2] = D_2[x] + E_2^2[X] = \frac{1}{8} + \frac{1}{4} = 0.375$,
+
+$E_3[X^2] = D_3[x] + E_3^2[X] = \frac{25}{12} + \frac{25}{4} = 8.333$
+
+$0.1 * E_1[X^2] + 0.2 * E_2[X^2] + 0.7 * E_3[X^2] = E[X^2] = 0.1 * 16 + 0.2 * 0.375 + 0.7 * 8.333 = 7.5081$
 
 
-$E_1[X^2] + E_2[X^2] + E_3[X^2] = E[X^2] = 16 + \frac{5}{8} + \frac{55}{12} = \frac{509}{24}$
+$E_1^2[X] = 0$,  
 
-$E_1^2[X] = 0, E_2^2[X] = \frac{1}{2}, E_3^2[X] = \frac{25}{12}$
+$E_2^2[X] = \frac{1}{4}$,
 
-$E_1^2[X] + E_2^2[X] + E_3^2[X] = E^2[X] = 0 + \frac{1}{2} + \frac{25}{12} = \frac{31}{12}$
+$E_3^2[X] = \frac{25}{4}$
+
+$0.1 * E_1^2[X] + 0.2 * E_2^2[X] + 0.7 * E_3^2[X] = E^2[X] = 0 + 0.2 * \frac{1}{4} + 0.7 * \frac{25}{4} = 4.425$
 
 
 4. Смоделировать с помощью генераторов случайных чисел выборку из заданного
 (согласно своему варианту) распределения.
 
 ```{r}
-F2_rev <- function(y) {
-   return(3*sin(1/2 * pi*(2*y-1)))
-}
+
+  F2 <- function(x) {
+    return (1/2 + pi_1 * asin(x/d))
+  }  
+  
+  F2_inv <- function(y) {
+    return (d*sin(pi/2 * (2*y - 1))) 
+  }
+
 ```
 
 
 ```{r}
+
   U1 = rnorm(N, mu, sigma_2) # norm distribution
-  U2 = F2_rev(runif(N, 0, 1))# arcsin distribution, Smirnov method
+  U  = runif(N, 0, 1)  
+  U2 = F2_inv(U)             # arcsin distribution, Smirnov method
   U3 = runif(N, a, b)        # uniform distribution
+
 ```
 
 ```{r}
+
   random_vector = sample(0:2, N, TRUE)
   mixed = U1*(random_vector==0) + U2*(random_vector == 1) + U3*(random_vector == 2)
+  
 ```
 
 5. Построить в одном графическом окне графики функции распределения F и
 эмпирической функции распределения Fn, сравнить их визуально.
 
 ```{r}
-F <- function(x) { 
-  
-  # distribution mix 
-  return ( 0.1 * pnorm(x, mean=mu, sd = sigma_2) + 0.2 * (0.5 + 1/pi * asin(x/3)) + 0.7*x/5)
-}
+
+  F <- function(x) { 
+    
+    # distribution mix 
+    return ( p1 * pnorm(x, mean=mu, sd = sigma_2) + p2 * (0.5 + pi_1 * asin(x/d)) + p3 * punif(x, a, b))
+  }
+
 ```
-
-
 
 ```{r}
-  x = seq(0, 3, 0.01)
-  plot(x, F(x) , type="l", col="Deep Sky Blue", lwd=5)
-  lines(ecdf(mixed), col="Dark red", lwd=2)
-```
 
+  x = seq(0.0, 3.0, 0.1)
+  plot(x, F(x), main = "Distribution F, F_n", type="l", col="dark blue", lwd=2)
+  lines(ecdf(mixed), col="dark red", lwd=2)
+  
+```
 6. Построить в одном графическом окне график плотности распределения и
 гистограмму относительных частот, задав количество интервалов по формуле $m = round (1.72 · n^\frac{1}{3})$
 
+
 ```{r}
+
+  f <- function(x) { 
+    
+    # density mix 
+    return ( p1 * dnorm(x, mean=mu, sd = sigma_2) + p2 * (pi_1 * 1/sqrt(d^2 - x^2)) + p3 * dunif(x, a, b) )
+  }
+
+```
+
+```{r}
+
+  h = hist(mixed[mixed < 3.0], breaks = round(1.72*(N ** (1/3))), plot=FALSE)
+  h$counts=h$counts/sum(h$counts)
+  plot(h,  main = "mixed histogram and density", col = "#E1DEFC")
+  
+  lines(x, f(x), type="l", col="dark red", lwd=2) 
+  
+```
+7. Вычислить значения оценок математического ожидания и дисперсии по полученной
+в п. 4 выборке. Сравнить статистические оценки математического ожидания и дисперсии
+с их теоретическими значениями.
+
+```{r}
+
+  mean_mixed = mean(mixed) 
+  var_mixed = var(mixed)
+  cat("Mean = 1.85", "\nMean_mixed = ", mean_mixed, "\nError mean = ", abs(mean_mixed -  1.85))
+  cat("\nVar  = 3.0831", "\nVar_mixed = ", var_mixed, "\nError var  = ", abs(var_mixed  -  3.0831))
+  
+```
+
+8. Построить асимптотические доверительные интервалы для «неизвестных»
+математического ожидания и дисперсии с доверительными вероятностями 0.9, 0.95
+и по правилу 3σ (т.е. с доверительной вероятностью 0.9974). Убедиться в том, что
+теоретические математическое ожидание и дисперсия содержатся в этих интервалах.
+
+
+
+```{r}
+
+  sqrt_N_inv = 1/sqrt(N)
+
+  for (alpha in c(0.1, 0.05, 0.0026)) {
+    
+      q = qnorm(1 - alpha/2)
+      S = sd(mixed)
+      mean_interval = c(mean_mixed - q * S * sqrt_N_inv, mean_mixed + q * S * sqrt_N_inv)
+
+      M_2 = sum((mixed - mean_mixed) ** 2) / N
+      M_4 = sum((mixed - mean_mixed) ** 4) / N
+  
+      sqrt_moments = (M_4 - M_2 ** 2) ** (0.5)
+      var_interval = c(var_mixed - q * sqrt_moments * sqrt_N_inv, var_mixed + q * sqrt_moments * sqrt_N_inv)
+      
+      
+      cat(mean_interval, " - доверительный интервал для м.о с уровнем значимости ", alpha, "\n")
+      cat(var_interval, " - доверительный интервал для дисперсии с уровнем значимости ", alpha, "\n\n")
+  }
+
+```
+9. Найти статистические оценки $B_N$ и $E_N$ параметров асимметрии $β = μ3/σ3$ и эксцесса
+$ε = μ4/σ4 − 3$. Являются ли эти оценки состоятельными? несмещенными?
+
+```{r}
+  
+  M_3 = sum((mixed - mean_mixed) ** 3) / N
+  
+  B = M_3/((var_mixed) ** (3/2))
+  E = M_4/(var_mixed ** 2)
+  
+  
+  cat("Параметр асимметрии B = ", B, "\n")
+  cat("Параметр эксцесса   E = ", E)
 
 ```
 
 
+10. Найти для своего распределения теоретические медиану и квантили уровней $0.25$ и
+$0.75$. Найти по выборке их статистические оценки, т.е. выборочную медиану и выборочные
+квантили тех же уровней. Сравнить оценки с соответствующими теоретическими
+значениями. Посмотреть, что будет происходить с увеличением объема выборки $N$.
 
-7. Вычислить значения оценок математического ожидания и дисперсии по полученной
-в п. 4 выборке. Сравнить статистические оценки математического ожидания и дисперсии
-с их теоретическими значениями.
+Теоретическая медиана $F(X) = 0.5 \rightarrow $
+
+
+```{r}
+  
+  mediana_mixed = median(mixed)
+  quantiles_mixed = quantile(mixed, probs = c(0.25, 0.75),  na.rm = TRUE, names = FALSE)
+  cat("Медиана mixed  = ", mediana_mixed, "\n")
+  cat("Квантили mixed = ", quantiles_mixed, "\n")
+  
+```
+
+```{r} 
+    # solve F(x) = 0.5
+
+    F <- function(x) ( p1 * pnorm(x, mean=mu, sd = sigma_2) + p2 * (0.5 + pi_1 * asin(x/d)) + p3 * punif(x, a, b) - 0.5)
+    mediana_theoretical <- uniroot(F, c(0, 3), tol = 0.01)
+    cat("Медиана theoretical  = ", mediana_theoretical$root, "\n")
+    
+    cat("Ошибка медианы       = ", abs(mediana_mixed - mediana_theoretical$root), "\n")
+```
+```{r}
+  quantile_theoretical = quantile(F(x), probs = c(0.25, 0.75), na.rm = TRUE, names = FALSE)
+
+  cat("Квантили theoretical = ", quantile_theoretical, "\n")
+  cat("Ошибка квантили      = ", abs(quantiles_mixed - quantile_theoretical), "\n")
+  
+```
+
+
+
+
