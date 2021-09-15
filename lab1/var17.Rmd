@@ -227,13 +227,13 @@ $0.75$. Найти по выборке их статистические оце�
     mediana_theoretical <- uniroot(F, c(0, 3), tol = 0.01)
     cat("Медиана theoretical  = ", mediana_theoretical$root, "\n")
     
-    cat("Ошибка медианы       = ", abs(mediana_mixed - mediana_theoretical$root), "\n")
+    cat("Ошибка медианы       = ", abs(mediana_mixed - mediana_theoretical$root))
 ```
 ```{r}
   quantile_theoretical = quantile(F(x), probs = c(0.25, 0.75), na.rm = TRUE, names = FALSE)
 
   cat("Квантили theoretical = ", quantile_theoretical, "\n")
-  cat("Ошибка квантили      = ", abs(quantiles_mixed - quantile_theoretical), "\n")
+  cat("Ошибка квантили      = ", abs(quantiles_mixed - quantile_theoretical))
   
 ```
 
