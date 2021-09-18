@@ -217,19 +217,174 @@ pre code {
 <!-- rnb-text-begin -->
 <p>Задание 1</p>
 <p>Проверить гипотезу <span class="math inline">\(H_0 : \alpha_1 = \alpha_2\)</span> о равенстве средних против альтернативы <span class="math inline">\(H_1 : \alpha_1 \neq \alpha_2\)</span> на уровне значимости <span class="math inline">\(\alpha = 0.05\)</span>. При этом известно, что дисперсии X и Y равны, то есть <span class="math inline">\(k = \sigma_1^2/\sigma_2^2 = 1\)</span> (предварительно сравнить визуально оценки дисперсий <span class="math inline">\(S_X^2\)</span> и <span class="math inline">\(S_Y^2\)</span> и убедиться, что они действительно близки между собой).</p>
-<p><span class="math inline">\(X : 1.3062, 1.9417, 2.2666, -0.7059, 0.5780, 0.0459, 0.9014, 1.6231\)</span> <span class="math inline">\(Y : 2.3191, 3.0358, 2.9845, 1.7428, 2.3102, 3.4808, 4.4665, 2.1826, 2.5317, 0.8446, 3.9177, 1.4204\)</span></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBYID0gYygxLjMwNjIsIDEuOTQxNywgMi4yNjY2LCAtMC43MDU5LCAwLjU3ODAsIDAuMDQ1OSwgMC45MDE0LCAxLjYyMzEpXG4gIFkgPSBjKDIuMzE5MSwgMy4wMzU4LCAyLjk4NDUsIDEuNzQyOCwgMi4zMTAyLCAzLjQ4MDgsIDQuNDY2NSwgMi4xODI2LCAyLjUzMTcsIDAuODQ0NiwgMy45MTc3LCAxLjQyMDQpXG4gIG4xID0gbGVuZ3RoKFgpXG4gIG4yID0gbGVuZ3RoKFkpXG4gIFxuICBhID0gMC4wNVxuXG5gYGAifQ== -->
+<pre class="r"><code>  X = c(1.3062, 1.9417, 2.2666, -0.7059, 0.5780, 0.0459, 0.9014, 1.6231)
+  Y = c(2.3191, 3.0358, 2.9845, 1.7428, 2.3102, 3.4808, 4.4665, 2.1826, 2.5317, 0.8446, 3.9177, 1.4204)
+  n1 = length(X)
+  n2 = length(Y)
+  
+  a = 0.05
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBTX3ggPSB2YXIoWClcbiAgU195ID0gdmFyKFkpXG4gIHByaW50KFNfeClcbmBgYCJ9 -->
+<pre class="r"><code>  S_x = var(X)
+  S_y = var(Y)
+  print(S_x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTk3Mjk0N1xuIn0= -->
+<pre><code>[1] 0.9972947</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBwcmludChTX3kpXG5gYGAifQ== -->
+<pre class="r"><code>  print(S_y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuMDgwMjc5XG4ifQ== -->
+<pre><code>[1] 1.080279</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBjYXQoXCJWYXJpYW5jZSBlcnJyb3IgPSBcIiwgYWJzKFNfeC1TX3kpKVxuYGBgIn0= -->
+<pre class="r"><code>  cat(&quot;Variance errror = &quot;, abs(S_x-S_y))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVmFyaWFuY2UgZXJycm9yID0gIDAuMDgyOTg0MTVcbiJ9 -->
+<pre><code>Variance errror =  0.08298415</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBYX2JhciA9IHN1bShYKSAvIG4xXG4gIFlfYmFyID0gc3VtKFkpIC8gbjJcbiAgcHJpbnQoWF9iYXIpXG5gYGAifQ== -->
+<pre class="r"><code>  X_bar = sum(X) / n1
+  Y_bar = sum(Y) / n2
+  print(X_bar)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTk0NjI1XG4ifQ== -->
+<pre><code>[1] 0.994625</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBwcmludChZX2JhcilcbmBgYCJ9 -->
+<pre class="r"><code>  print(Y_bar)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIuNjAzMDU4XG4ifQ== -->
+<pre><code>[1] 2.603058</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBUX24gPSAoWF9iYXIgLSBZX2JhcikgLyAoc3FydChuMSpTX3ggKyBuMipTX3kpKSAqIHNxcnQobjEqbjIqKG4xICsgbjIgLSAyKSAvIChuMSArIG4yKSlcbiAgcHJpbnQoVF9uKVxuYGBgIn0= -->
+<pre class="r"><code>  T_n = (X_bar - Y_bar) / (sqrt(n1*S_x + n2*S_y)) * sqrt(n1*n2*(n1 + n2 - 2) / (n1 + n2))
+  print(T_n)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0zLjI2NzAzNlxuIn0= -->
+<pre><code>[1] -3.267036</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICB6X2FsZmEgPSBxdChhLCBkZiA9IG4xICsgbjIgLSAyKVxuICBwcmludCh6X2FsZmEpXG5gYGAifQ== -->
+<pre class="r"><code>  z_alfa = qt(a, df = n1 + n2 - 2)
+  print(z_alfa)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIC0xLjczNDA2NFxuIn0= -->
+<pre><code>[1] -1.734064</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBpZiAoYWJzKFRfbikgPiB6X2FsZmEpIHtcbiAgICBwcmludChcIkgxXCIpXG4gIH0gZWxzZSB7XG4gICAgcHJpbnQoXCJIMFwiKVxuICB9XG5gYGAifQ== -->
+<pre class="r"><code>  if (abs(T_n) &gt; z_alfa) {
+    print(&quot;H1&quot;)
+  } else {
+    print(&quot;H0&quot;)
+  }</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSDFcIlxuIn0= -->
+<pre><code>[1] &quot;H1&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Задание 2</p>
 <p>Проверить гипотезу <span class="math inline">\(H_0 : \sigma_1 = \sigma_2\)</span> о равенстве дисперсий против альтернативы <span class="math inline">\(H_1 : \sigma_1 &lt; \sigma_2\)</span> на уровне значимости <span class="math inline">\(\alpha = 0.01\)</span>.</p>
-<p><span class="math inline">\(X : 4.9229, 4.6497, 5.6835, 5.9996, 4.7639, 4.2502, 5.7419, 4.4196, 4.9596, 4.1495, 5.3319, 5.4257, 4.0597\)</span> <span class="math inline">\(Y : 0.5125, 1.2868, 0.9012, 3.3951, -0.2900, 1.1145, 3.5717, 3.5069, 1.9642, 2.7662, 2.3833, 0.1331, 0.8298, 0.0082, -0.1198\)</span></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBYID0gYyg0LjkyMjksIDQuNjQ5NywgNS42ODM1LCA1Ljk5OTYsIDQuNzYzOSwgNC4yNTAyLCA1Ljc0MTksIDQuNDE5NiwgNC45NTk2LCA0LjE0OTUsIDUuMzMxOSwgNS40MjU3LCA0LjA1OTcpXG4gIFkgPSBjKDAuNTEyNSwgMS4yODY4LCAwLjkwMTIsIDMuMzk1MSwgLTAuMjkwMCwgMS4xMTQ1LCAzLjU3MTcsIDMuNTA2OSwgMS45NjQyLCAyLjc2NjIsIDIuMzgzMywgMC4xMzMxLCAwLjgyOTgsIDAuMDA4MiwgLTAuMTE5OClcbiAgXG4gIG4xID0gbGVuZ3RoKFgpXG4gIG4yID0gbGVuZ3RoKFkpXG4gIFxuICBhID0gMC4wMVxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  X = c(4.9229, 4.6497, 5.6835, 5.9996, 4.7639, 4.2502, 5.7419, 4.4196, 4.9596, 4.1495, 5.3319, 5.4257, 4.0597)
+  Y = c(0.5125, 1.2868, 0.9012, 3.3951, -0.2900, 1.1145, 3.5717, 3.5069, 1.9642, 2.7662, 2.3833, 0.1331, 0.8298, 0.0082, -0.1198)
+  
+  n1 = length(X)
+  n2 = length(Y)
+  
+  a = 0.01
+  </code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBTX3ggPSB2YXIoWClcbiAgU195ID0gdmFyKFkpXG4gIHByaW50KFNfeClcbmBgYCJ9 -->
+<pre class="r"><code>  S_x = var(X)
+  S_y = var(Y)
+  print(S_x)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNDE0MDg2N1xuIn0= -->
+<pre><code>[1] 0.4140867</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBwcmludChTX3kpXG5gYGAifQ== -->
+<pre class="r"><code>  print(S_y)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuODg0OTYyXG4ifQ== -->
+<pre><code>[1] 1.884962</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBjYXQoXCJWYXJpYW5jZSBlcnJyb3IgPSBcIiwgYWJzKFNfeC1TX3kpKVxuYGBgIn0= -->
+<pre class="r"><code>  cat(&quot;Variance errror = &quot;, abs(S_x-S_y))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVmFyaWFuY2UgZXJycm9yID0gIDEuNDcwODc1XG4ifQ== -->
+<pre><code>Variance errror =  1.470875</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBUX24gPSBuMSoobjIgLSAxKSpTX3ggLyAobjIqKG4xIC0gMSkgKiBTX3kpXG4gIHByaW50KFRfbilcbmBgYCJ9 -->
+<pre class="r"><code>  T_n = n1*(n2 - 1)*S_x / (n2*(n1 - 1) * S_y)
+  print(T_n)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMjIyMTE5OVxuIn0= -->
+<pre><code>[1] 0.2221199</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICB6X2FsZmEgPSBkZihjKGEvMiwgMSAtIGEvMiksIGRmMSA9IG4xIC0gMSwgZGYyID0gbjIgLSAxKVxuICBwcmludCh6X2FsZmEpXG5gYGAifQ== -->
+<pre class="r"><code>  z_alfa = df(c(a/2, 1 - a/2), df1 = n1 - 1, df2 = n2 - 1)
+  print(z_alfa)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDYuNDk5MDE5ZS0wOSA3LjA2ODI2M2UtMDFcbiJ9 -->
+<pre><code>[1] 6.499019e-09 7.068263e-01</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBpZiAoVF9uID4gel9hbGZhWzFdICYmIFRfbiA8IHpfYWxmYVsyXSkge1xuICAgIHByaW50KFwiSDBcIilcbiAgfSBlbHNlIHtcbiAgICBwcmludChcIkgxXCIpXG4gIH1cbmBgYCJ9 -->
+<pre class="r"><code>  if (T_n &gt; z_alfa[1] &amp;&amp; T_n &lt; z_alfa[2]) {
+    print(&quot;H0&quot;)
+  } else {
+    print(&quot;H1&quot;)
+  }</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSDBcIlxuIn0= -->
+<pre><code>[1] &quot;H0&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAyLCDQstCw0YDQuNCw0L3RgiAxNyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoK0JfQsNC00LDQvdC40LUgMQoK0J/RgNC+0LLQtdGA0LjRgtGMINCz0LjQv9C+0YLQtdC30YMgJEhfMCA6IFxhbHBoYV8xID0gXGFscGhhXzIkINC+INGA0LDQstC10L3RgdGC0LLQtSDRgdGA0LXQtNC90LjRhSDQv9GA0L7RgtC40LIK0LDQu9GM0YLQtdGA0L3QsNGC0LjQstGLICRIXzEgOiBcYWxwaGFfMSBcbmVxIFxhbHBoYV8yJCDQvdCwINGD0YDQvtCy0L3QtSDQt9C90LDRh9C40LzQvtGB0YLQuCAkXGFscGhhID0gMC4wNSQuINCf0YDQuCDRjdGC0L7QvCDQuNC30LLQtdGB0YLQvdC+LCDRh9GC0L4g0LTQuNGB0L/QtdGA0YHQuNC4IFgg0LggWSDRgNCw0LLQvdGLLCDRgtC+INC10YHRgtGMICRrID0gXHNpZ21hXzFeMi9cc2lnbWFfMl4yID0gMSQgKNC/0YDQtdC00LLQsNGA0LjRgtC10LvRjNC90L4g0YHRgNCw0LLQvdC40YLRjCDQstC40LfRg9Cw0LvRjNC90L4g0L7RhtC10L3QutC4INC00LjRgdC/0LXRgNGB0LjQuSAkU19YXjIkINC4ICRTX1leMiQg0Lgg0YPQsdC10LTQuNGC0YzRgdGPLCDRh9GC0L4g0L7QvdC4INC00LXQudGB0YLQstC40YLQtdC70YzQvdC+INCx0LvQuNC30LrQuCDQvNC10LbQtNGDINGB0L7QsdC+0LkpLgoKCiRYIDogMS4zMDYyLCAxLjk0MTcsIDIuMjY2NiwgLTAuNzA1OSwgMC41NzgwLCAwLjA0NTksIDAuOTAxNCwgMS42MjMxJAokWSA6IDIuMzE5MSwgMy4wMzU4LCAyLjk4NDUsIDEuNzQyOCwgMi4zMTAyLCAzLjQ4MDgsIDQuNDY2NSwgMi4xODI2LCAyLjUzMTcsIDAuODQ0NiwgMy45MTc3LCAxLjQyMDQkCgoKYGBge3J9CgoKYGBgCgrQl9Cw0LTQsNC90LjQtSAyCgrQn9GA0L7QstC10YDQuNGC0Ywg0LPQuNC/0L7RgtC10LfRgyAkSF8wIDogXHNpZ21hXzEgPSBcc2lnbWFfMiQg0L4g0YDQsNCy0LXQvdGB0YLQstC1INC00LjRgdC/0LXRgNGB0LjQuSDQv9GA0L7RgtC40LIK0LDQu9GM0YLQtdGA0L3QsNGC0LjQstGLICRIXzEgOiBcc2lnbWFfMSA8IFxzaWdtYV8yJCDQvdCwINGD0YDQvtCy0L3QtSDQt9C90LDRh9C40LzQvtGB0YLQuCAkXGFscGhhICA9IDAuMDEkLgoKCiRYIDogNC45MjI5LCA0LjY0OTcsIDUuNjgzNSwgNS45OTk2LCA0Ljc2MzksIDQuMjUwMiwgNS43NDE5LCA0LjQxOTYsIDQuOTU5NiwgNC4xNDk1LCA1LjMzMTksIDUuNDI1NywgNC4wNTk3JAokWSA6IDAuNTEyNSwgMS4yODY4LCAwLjkwMTIsIDMuMzk1MSwgLTAuMjkwMCwgMS4xMTQ1LCAzLjU3MTcsIDMuNTA2OSwgMS45NjQyLCAyLjc2NjIsIDIuMzgzMywgMC4xMzMxLCAwLjgyOTgsIDAuMDA4MiwgLTAuMTE5OCQKCmBgYHtyfQoKCmBgYAo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAyLCDQstCw0YDQuNCw0L3RgiAxNyIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoK0JfQsNC00LDQvdC40LUgMQoK0J/RgNC+0LLQtdGA0LjRgtGMINCz0LjQv9C+0YLQtdC30YMgJEhfMCA6IFxhbHBoYV8xID0gXGFscGhhXzIkINC+INGA0LDQstC10L3RgdGC0LLQtSDRgdGA0LXQtNC90LjRhSDQv9GA0L7RgtC40LIK0LDQu9GM0YLQtdGA0L3QsNGC0LjQstGLICRIXzEgOiBcYWxwaGFfMSBcbmVxIFxhbHBoYV8yJCDQvdCwINGD0YDQvtCy0L3QtSDQt9C90LDRh9C40LzQvtGB0YLQuCAkXGFscGhhID0gMC4wNSQuINCf0YDQuCDRjdGC0L7QvCDQuNC30LLQtdGB0YLQvdC+LCDRh9GC0L4g0LTQuNGB0L/QtdGA0YHQuNC4IFgg0LggWSDRgNCw0LLQvdGLLCDRgtC+INC10YHRgtGMICRrID0gXHNpZ21hXzFeMi9cc2lnbWFfMl4yID0gMSQgKNC/0YDQtdC00LLQsNGA0LjRgtC10LvRjNC90L4g0YHRgNCw0LLQvdC40YLRjCDQstC40LfRg9Cw0LvRjNC90L4g0L7RhtC10L3QutC4INC00LjRgdC/0LXRgNGB0LjQuSAkU19YXjIkINC4ICRTX1leMiQg0Lgg0YPQsdC10LTQuNGC0YzRgdGPLCDRh9GC0L4g0L7QvdC4INC00LXQudGB0YLQstC40YLQtdC70YzQvdC+INCx0LvQuNC30LrQuCDQvNC10LbQtNGDINGB0L7QsdC+0LkpLgoKCmBgYHtyfQogIFggPSBjKDEuMzA2MiwgMS45NDE3LCAyLjI2NjYsIC0wLjcwNTksIDAuNTc4MCwgMC4wNDU5LCAwLjkwMTQsIDEuNjIzMSkKICBZID0gYygyLjMxOTEsIDMuMDM1OCwgMi45ODQ1LCAxLjc0MjgsIDIuMzEwMiwgMy40ODA4LCA0LjQ2NjUsIDIuMTgyNiwgMi41MzE3LCAwLjg0NDYsIDMuOTE3NywgMS40MjA0KQogIG4xID0gbGVuZ3RoKFgpCiAgbjIgPSBsZW5ndGgoWSkKICAKICBhID0gMC4wNQoKYGBgCgpgYGB7cn0KICBTX3ggPSB2YXIoWCkKICBTX3kgPSB2YXIoWSkKICBwcmludChTX3gpCiAgcHJpbnQoU195KQogIGNhdCgiVmFyaWFuY2UgZXJycm9yID0gIiwgYWJzKFNfeC1TX3kpKQpgYGAKCgpgYGB7cn0KICBYX2JhciA9IHN1bShYKSAvIG4xCiAgWV9iYXIgPSBzdW0oWSkgLyBuMgogIHByaW50KFhfYmFyKQogIHByaW50KFlfYmFyKQpgYGAKYGBge3J9CiAgVF9uID0gKFhfYmFyIC0gWV9iYXIpIC8gKHNxcnQobjEqU194ICsgbjIqU195KSkgKiBzcXJ0KG4xKm4yKihuMSArIG4yIC0gMikgLyAobjEgKyBuMikpCiAgcHJpbnQoVF9uKQpgYGAKCmBgYHtyfQogIHpfYWxmYSA9IHF0KGEsIGRmID0gbjEgKyBuMiAtIDIpCiAgcHJpbnQoel9hbGZhKQpgYGAKCmBgYHtyfQogIGlmIChhYnMoVF9uKSA+IHpfYWxmYSkgewogICAgcHJpbnQoIkgxIikKICB9IGVsc2UgewogICAgcHJpbnQoIkgwIikKICB9CmBgYAoKCtCX0LDQtNCw0L3QuNC1IDIKCtCf0YDQvtCy0LXRgNC40YLRjCDQs9C40L/QvtGC0LXQt9GDICRIXzAgOiBcc2lnbWFfMSA9IFxzaWdtYV8yJCDQviDRgNCw0LLQtdC90YHRgtCy0LUg0LTQuNGB0L/QtdGA0YHQuNC5INC/0YDQvtGC0LjQsgrQsNC70YzRgtC10YDQvdCw0YLQuNCy0YsgJEhfMSA6IFxzaWdtYV8xIDwgXHNpZ21hXzIkINC90LAg0YPRgNC+0LLQvdC1INC30L3QsNGH0LjQvNC+0YHRgtC4ICRcYWxwaGEgID0gMC4wMSQuCgpgYGB7cn0KICBYID0gYyg0LjkyMjksIDQuNjQ5NywgNS42ODM1LCA1Ljk5OTYsIDQuNzYzOSwgNC4yNTAyLCA1Ljc0MTksIDQuNDE5NiwgNC45NTk2LCA0LjE0OTUsIDUuMzMxOSwgNS40MjU3LCA0LjA1OTcpCiAgWSA9IGMoMC41MTI1LCAxLjI4NjgsIDAuOTAxMiwgMy4zOTUxLCAtMC4yOTAwLCAxLjExNDUsIDMuNTcxNywgMy41MDY5LCAxLjk2NDIsIDIuNzY2MiwgMi4zODMzLCAwLjEzMzEsIDAuODI5OCwgMC4wMDgyLCAtMC4xMTk4KQogIAogIG4xID0gbGVuZ3RoKFgpCiAgbjIgPSBsZW5ndGgoWSkKICAKICBhID0gMC4wMQogIApgYGAKCmBgYHtyfQogIFNfeCA9IHZhcihYKQogIFNfeSA9IHZhcihZKQogIHByaW50KFNfeCkKICBwcmludChTX3kpCiAgY2F0KCJWYXJpYW5jZSBlcnJyb3IgPSAiLCBhYnMoU194LVNfeSkpCmBgYAoKCmBgYHtyfQogIFRfbiA9IG4xKihuMiAtIDEpKlNfeCAvIChuMioobjEgLSAxKSAqIFNfeSkKICBwcmludChUX24pCmBgYAoKYGBge3J9CiAgel9hbGZhID0gZGYoYyhhLzIsIDEgLSBhLzIpLCBkZjEgPSBuMSAtIDEsIGRmMiA9IG4yIC0gMSkKICBwcmludCh6X2FsZmEpCmBgYAoKYGBge3J9CiAgaWYgKFRfbiA+IHpfYWxmYVsxXSAmJiBUX24gPCB6X2FsZmFbMl0pIHsKICAgIHByaW50KCJIMCIpCiAgfSBlbHNlIHsKICAgIHByaW50KCJIMSIpCiAgfQpgYGAKCg==</div>
 
 
 
