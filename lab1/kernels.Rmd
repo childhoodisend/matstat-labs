@@ -1,0 +1,50 @@
+---
+title: "Kernels"
+output: html_notebook
+---
+
+```{r}
+  ind <- function(x, lim) {
+    return (abs(x) <= lim);
+  }
+```
+
+
+```{r}
+  Kernel1 <- function(y) {
+    return (3/4 * (1 - y**2) * ind(y, 1) )
+  }
+```
+
+
+```{r}
+  Kernel2 <- function(y) {
+    return (15/16 * (1 - y**2) * ind(y, 1))
+  }
+```
+
+```{r}
+  Kernel3 <- function(y) {
+    return (1 - abs(y))*ind(y, 1)
+  }
+```
+
+
+```{r}
+  Kernel4 <- function(y) {
+    return (1 / (2*pi) * exp(-y**2 / 2)) 
+  }
+```
+
+```{r}
+  Kernel5 <- function(y) {
+    return (1/2 * ind(y , 1))
+  }
+```
+
+```{r}
+  Kernel6 <- function(y) {
+    return (1/2 * exp(-abs(y)))
+  }
+```
+
