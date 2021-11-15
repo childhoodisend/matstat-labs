@@ -55,10 +55,10 @@ output: html_notebook
   }
   
   B = t(X_mat) %*% X_mat
-  
+  B_inv = inv(B)
   library(pracma)
   
-  Tetas_LS = inv(B) %*% t(X_mat) %*% Y
+  Tetas_LS = B_inv %*% t(X_mat) %*% Y
   
   print(Tetas_LS)
  
@@ -82,10 +82,37 @@ output: html_notebook
 ```
 ```{r}
   #4
+  
+  RSS = t(Y - X_mat %*% Tetas_LS) %*% (Y - X_mat %*% Tetas_LS)
 
-  S_square = 1/(n - m) * norm(Y - Y_cap, type = "2")
-  print(S_square)
+  Siqma_square = RSS/(n - m)
+  print(Siqma_square)
 
 ```
 
+```{r}
+  #5
+
+  alpha = 0.01
+  
+  q1 = qchisq(alpha/2, df=(n - m))
+  q2 = qchisq(1 - alpha/2, df=(n - m))
+  cat("Квантиль 1", q1, "\n")
+  cat("Квантиль 2", q2, "\n")
+  
+  cat("Доверительный интервал [", RSS/q2, ",", RSS/q1, "]", "с уровнем значимости ", alpha, "\n")
+  
+```
+```{r}
+  
+  q = qt(1-alpha/2, df=(n - m))
+
+  cat("Квантиль ", q, "\n")
+
+  
+  for (i in 1:m) {
+    cat("Доверительный интервал для teta" , i,  "[", Tetas_LS[i] - q * sqrt(Siqma_square * B_inv[i, i]), "," , Tetas_LS[i] + q * sqrt(Siqma_square * B_inv[i, i]), "] с уровнем значимости ", alpha, "\n")
+  }
+  
+```
 
