@@ -126,4 +126,10 @@ output: html_notebook
     }
   }
 ```
+```{r}
+  #7
+  Y_bar = 1/n * sum(Y)
+  
+  cat("d = ", 1 - RSS/(sum((Y-Y_bar)^2)))
+```
 
