@@ -1,0 +1,49 @@
+---
+title: "Лабораторная работа 3"
+output: html_notebook
+---
+
+```{r}
+  Y <- function(x, teta, eps) {
+    return (teta[1] + teta[2]*x + teta[3]*x**2 + teta[4]*x**3 + teta[5]*x**4 + eps)
+  }
+```
+
+
+
+```{r}
+  #1
+  a = 0
+  b = 5
+  n = 100
+  
+  mean = 0
+  sd = 1
+  
+  tetas <- c(1, 2, 3, 4, 5)
+  X <- seq(a, b, (b - a) / n)
+```
+
+
+```{r}
+  #2
+  eps <- rnorm(n + 1, mean=mean, sd=sd)
+  Y <- Y(X, teta=tetas, eps=eps)
+```
+
+
+```{r}
+
+  #install.packages("ggplot2")
+  library(ggplot2)
+  
+  
+  df <- data.frame(y<-Y, x<-X)
+  ggplot(data=df, aes(x=x, y=y))  + geom_line()
+
+```
+
+```{r}
+  #3
+```
+
