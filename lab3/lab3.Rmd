@@ -13,22 +13,23 @@ output: html_notebook
 
 ```{r}
   #1
-  a = 0
-  b = 5
-  n = 100
+  a = 1
+  b = 2
+  n = 20
+  m = 5
   
   mean = 0
-  sd = 1
+  sd = 0.04
   
-  tetas <- c(1, 2, 3, 4, 5)
-  X <- seq(a, b, (b - a) / n)
+  tetas <- c(0.1, 1.1, 0.7, -1, 1)
+  x <- seq(a, b, (b - a) / n)
 ```
 
 
 ```{r}
   #2
   eps <- rnorm(n + 1, mean=mean, sd=sd)
-  Y <- Y(X, teta=tetas, eps=eps)
+  Y <- Y(x, teta=tetas, eps=eps)
 ```
 
 
@@ -38,12 +39,53 @@ output: html_notebook
   library(ggplot2)
   
   
-  df <- data.frame(y<-Y, x<-X)
-  ggplot(data=df, aes(x=x, y=y))  + geom_line()
+  df <- data.frame(Y, x)
+  ggplot(data=df, aes(x=x, y=Y))  + geom_line()
 
 ```
 
 ```{r}
-  #3
+#3
+  X_mat = matrix(1, nrow = n + 1, ncol = 5)
+  
+  for (i in 1:(n + 1)) {
+    for (j in 1:m) {
+      X_mat[i, j] = x[i]**(j - 1) 
+    }
+  }
+  
+  B = t(X_mat) %*% X_mat
+  
+  library(pracma)
+  
+  Tetas_LS = inv(B) %*% t(X_mat) %*% Y
+  
+  print(Tetas_LS)
+ 
 ```
+
+
+```{r}
+  Y_cap <- function(x) {
+    return (Tetas_LS[1] + Tetas_LS[2]*x + Tetas_LS[3]*x**2 + Tetas_LS[4]*x**3 + Tetas_LS[5]*x**4 + eps)
+  }
+```
+
+
+```{r}
+  Y_cap <- Y_cap(x)
+```
+
+```{r}
+  df <- data.frame(Y_cap, Y, x)
+  ggplot(data=df, aes(x))  + geom_line(aes(y=Y), color='green') + geom_line(aes(y=Y_cap), color='red')
+```
+```{r}
+  #4
+
+  S_square = 1/(n - m) * norm(Y - Y_cap, type = "2")
+  print(S_square)
+
+```
+
 
