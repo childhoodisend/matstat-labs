@@ -132,4 +132,8 @@ output: html_notebook
   
   cat("d = ", 1 - RSS/(sum((Y-Y_bar)^2)))
 ```
+```{r}
+  #8
+
+```
 
