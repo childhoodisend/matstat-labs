@@ -266,7 +266,7 @@ $0.75$. Найти по выборке их статистические оце�
 
 
 ```{r}
-  #library(ggplot2)
+  library(ggplot2)
   
   df <- data.frame(val = mixed) 
 
@@ -274,5 +274,11 @@ $0.75$. Найти по выборке их статистические оце�
     geom_density(color = "blue")  + 
     geom_histogram(binwidth = 1, color="gray", fill="white", aes(y =..count../sum(..count..))) + 
     geom_freqpoly(bins=100, color="red", aes(y =..count../sum(..count..)))
-
 ```
+```{python}
+  
+```
+
+
+
+
