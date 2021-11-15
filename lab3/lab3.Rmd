@@ -115,4 +115,15 @@ output: html_notebook
   }
   
 ```
+```{r}
+  #6
+  for (i in 1:m) {
+    if(abs(tetas[i]/(sqrt(Siqma_square * B_inv[i, i]))) <= q) {
+      cat("H0 для teta[", i, "] = ", tetas[i],"\n")
+    }
+    else {
+      cat("H1 для teta[", i, "] = ", tetas[i], "\n")
+    }
+  }
+```
 
