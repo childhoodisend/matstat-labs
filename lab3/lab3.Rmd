@@ -55,8 +55,9 @@ output: html_notebook
   }
   
   B = t(X_mat) %*% X_mat
-  B_inv = inv(B)
   library(pracma)
+  B_inv = inv(B)
+  
   
   Tetas_LS = B_inv %*% t(X_mat) %*% Y
   
