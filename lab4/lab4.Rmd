@@ -4,5 +4,55 @@ output: html_notebook
 ---
 
 ```{r}
+  #1
+
+  nu = c(968, 1026, 1021, 974, 1014, 1046, 1021, 970, 948, 1014)
+  n = sum(nu)
+  p = 1/10 # H0
+  alpha = 0.05
+  r = length(nu)
+  
+  P_n_nu = sum((nu-n*p)^2 / (n*p))
+  
+  q = qchisq(1 - alpha, df=(r-1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r-1))
+  cat("p_value = ", p_value)
   
 ```
+```{r}
+  #2
+  n = 576
+  x_i = c(0, 1, 2, 3, 4, 5, 6, 7)
+  nu = c(229, 211, 93, 35, 7, 0, 0, 1)
+  r = length(nu)
+  lambda = sum(x_i) / length(x_i)
+  
+  P_n_nu = sum((nu - n*ppois(x_i, lambda=lambda))/ (n*ppois(x_i, lambda=lambda)))
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r-1))
+  cat("p_value = ", p_value)
+  
+```
+```{r}
+  #3
+  n = 50
+  alpha = 0.1
+  x_i = c(-0.5, 0.5, 1.5, 3.5)
+  nu = c(7, 25, 8, 10)
+  #estimate params mu sigma_sq
+  
+```
+
+```{r}
+  #4
+  alpha = 0.05
+  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=2, ncol=4, byrow=TRUE)
+  
+  
+```
+

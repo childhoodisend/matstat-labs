@@ -217,9 +217,116 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICAjMVxuXG4gIG51ID0gYyg5NjgsIDEwMjYsIDEwMjEsIDk3NCwgMTAxNCwgMTA0NiwgMTAyMSwgOTcwLCA5NDgsIDEwMTQpXG4gIG4gPSBzdW0obnUpXG4gIHAgPSAxLzEwICMgSDBcbiAgYWxwaGEgPSAwLjA1XG4gIHIgPSBsZW5ndGgobnUpXG4gIFxuICBQX25fbnUgPSBzdW0oKG51LW4qcCleMiAvIChuKnApKVxuICBcbiAgcSA9IHFjaGlzcSgxIC0gYWxwaGEsIGRmPShyLTEpKVxuICBcbiAgaWYgKFBfbl9udSA8IHEpIHtcbiAgICBjYXQoXFxITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gXFwsIGFscGhhLCBcXFxcblxcKVxuICB9XG5gYGBcbmBgYCJ9 -->
+<pre class="r"><code>```r
+  #1
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KICAKYGBgCg==</div>
+  nu = c(968, 1026, 1021, 974, 1014, 1046, 1021, 970, 948, 1014)
+  n = sum(nu)
+  p = 1/10 # H0
+  alpha = 0.05
+  r = length(nu)
+  
+  P_n_nu = sum((nu-n*p)^2 / (n*p))
+  
+  q = qchisq(1 - alpha, df=(r-1))
+  
+  if (P_n_nu &lt; q) {
+    cat(\HO accepted with alpha = \, alpha, \\n\)
+  }</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICAwLjA1IFxuIn0= --&gt;
+</code></pre>
+<p>HO accepted with alpha = 0.05</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICBcbiAgcF92YWx1ZSA9IDEgLSBwY2hpc3EoUF9uX251LCBkZj0oci0xKSlcbiAgY2F0KFxccF92YWx1ZSA9IFxcLCBwX3ZhbHVlKVxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r-1))
+  cat(\p_value = \, p_value)</code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjQwNDA0NTJcbiJ9 --&gt;
+</code></pre>
+<p>p_value = 0.4040452</p>
+<pre><code>
+
+
+&lt;!-- rnb-output-end --&gt;
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICBcbmBgYFxuYGBgIn0= --&gt;
+
+```r
+```r
+  </code></pre>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjMlxuICBuID0gNTc2XG4gIHhfaSA9IGMoMCwgMSwgMiwgMywgNCwgNSwgNiwgNylcbiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpXG4gIHIgPSBsZW5ndGgobnUpXG4gIGxhbWJkYSA9IHN1bSh4X2kpIC8gbGVuZ3RoKHhfaSlcbiAgXG4gIFBfbl9udSA9IHN1bSgobnUgLSBuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpLyAobipwcG9pcyh4X2ksIGxhbWJkYT1sYW1iZGEpKSlcbiAgXG4gIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpXG4gIGNhdChcInBfdmFsdWUgPSBcIiwgcF92YWx1ZSlcbmBgYCJ9 --&gt;
+
+```r
+  #2
+  n = 576
+  x_i = c(0, 1, 2, 3, 4, 5, 6, 7)
+  nu = c(229, 211, 93, 35, 7, 0, 0, 1)
+  r = length(nu)
+  lambda = sum(x_i) / length(x_i)
+  
+  P_n_nu = sum((nu - n*ppois(x_i, lambda=lambda))/ (n*ppois(x_i, lambda=lambda)))
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r-1))
+  cat(&quot;p_value = &quot;, p_value)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjI5MDg1ODVcbiJ9 -->
+<pre><code>p_value =  0.2908585</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcblxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  
+
+  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjM1xuICBuID0gNTBcbiAgYWxwaGEgPSAwLjFcbiAgeF9pID0gYygtMC41LCAwLjUsIDEuNSwgMy41KVxuICBudSA9IGMoNywgMjUsIDgsIDEwKVxuICAjZXN0aW1hdGUgcGFyYW1zIG11IHNpZ21hX3NxXG4gIFxuYGBgIn0= -->
+<pre class="r"><code>  #3
+  n = 50
+  alpha = 0.1
+  x_i = c(-0.5, 0.5, 1.5, 3.5)
+  nu = c(7, 25, 8, 10)
+  #estimate params mu sigma_sq
+  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjNFxuICBhbHBoYSA9IDAuMDVcbiAgbSA9IG1hdHJpeChjKDksIDgsIDUsIDQsICAzLCA1LCA5LCAxMSksIG5yb3c9MiwgbmNvbD00LCBieXJvdz1UUlVFKVxuICBcbiAgXG5gYGAifQ== -->
+<pre class="r"><code>  #4
+  alpha = 0.05
+  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=2, ncol=4, byrow=TRUE)
+  
+  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KICAjMQoKICBudSA9IGMoOTY4LCAxMDI2LCAxMDIxLCA5NzQsIDEwMTQsIDEwNDYsIDEwMjEsIDk3MCwgOTQ4LCAxMDE0KQogIG4gPSBzdW0obnUpCiAgcCA9IDEvMTAgIyBIMAogIGFscGhhID0gMC4wNQogIHIgPSBsZW5ndGgobnUpCiAgCiAgUF9uX251ID0gc3VtKChudS1uKnApXjIgLyAobipwKSkKICAKICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGY9KHItMSkpCiAgCiAgaWYgKFBfbl9udSA8IHEpIHsKICAgIGNhdCgiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKICBwX3ZhbHVlID0gMSAtIHBjaGlzcShQX25fbnUsIGRmPShyLTEpKQogIGNhdCgicF92YWx1ZSA9ICIsIHBfdmFsdWUpCiAgCmBgYApgYGB7cn0KICAjMgogIG4gPSA1NzYKICB4X2kgPSBjKDAsIDEsIDIsIDMsIDQsIDUsIDYsIDcpCiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpCiAgciA9IGxlbmd0aChudSkKICBsYW1iZGEgPSBzdW0oeF9pKSAvIGxlbmd0aCh4X2kpCiAgCiAgUF9uX251ID0gc3VtKChudSAtIG4qcHBvaXMoeF9pLCBsYW1iZGE9bGFtYmRhKSkvIChuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpKQogIAogIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpCiAgY2F0KCJwX3ZhbHVlID0gIiwgcF92YWx1ZSkKICAKYGBgCmBgYHtyfQogICMzCiAgbiA9IDUwCiAgYWxwaGEgPSAwLjEKICB4X2kgPSBjKC0wLjUsIDAuNSwgMS41LCAzLjUpCiAgbnUgPSBjKDcsIDI1LCA4LCAxMCkKICAjZXN0aW1hdGUgcGFyYW1zIG11IHNpZ21hX3NxCiAgCmBgYAoKYGBge3J9CiAgIzQKICBhbHBoYSA9IDAuMDUKICBtID0gbWF0cml4KGMoOSwgOCwgNSwgNCwgIDMsIDUsIDksIDExKSwgbnJvdz0yLCBuY29sPTQsIGJ5cm93PVRSVUUpCiAgCiAgCmBgYAoK</div>
 
 
 
