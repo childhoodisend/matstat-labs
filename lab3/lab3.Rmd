@@ -13,15 +13,15 @@ output: html_notebook
 
 ```{r}
   #1
-  a = 1
-  b = 2
-  n = 20
+  a = 0
+  b = 10
+  n = 50
   m = 5
   
   mean = 0
-  sd = 0.04
+  sd = 20
   
-  tetas <- c(0.1, 1.1, 0.7, -1, 1)
+  tetas <- c(1, -5, 20, -1, -0.1)
   x <- seq(a, b, (b - a) / n)
 ```
 
@@ -68,7 +68,7 @@ output: html_notebook
 
 ```{r}
   Y_cap <- function(x) {
-    return (Tetas_LS[1] + Tetas_LS[2]*x + Tetas_LS[3]*x**2 + Tetas_LS[4]*x**3 + Tetas_LS[5]*x**4 + eps)
+    return (Tetas_LS[1] + Tetas_LS[2]*x + Tetas_LS[3]*x**2 + Tetas_LS[4]*x**3 + Tetas_LS[5]*x**4)
   }
 ```
 
@@ -79,7 +79,7 @@ output: html_notebook
 
 ```{r}
   df <- data.frame(Y_cap, Y, x)
-  ggplot(data=df, aes(x))  + geom_line(aes(y=Y), color='green') + geom_line(aes(y=Y_cap), color='red')
+  ggplot(data=df, aes(x))  + geom_line(aes(y=Y), color='blue') + geom_line(aes(y=Y_cap), color='red')
 ```
 ```{r}
   #4
