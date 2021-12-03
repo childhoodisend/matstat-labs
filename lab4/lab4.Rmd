@@ -146,13 +146,89 @@ output: html_notebook
   #7
   alpha = 0.01
   r = 0
-  s = 0
+  s = 3
 
   # разбить на группы
   
   arr1 = c(182, 169, 182, 176, 180, 170, 174, 182, 173, 182, 180, 168, 165)
   arr2 = c(167, 170, 164, 188, 182, 190, 162, 164, 160, 167, 163, 185, 156, 194, 174, 161, 185, 159, 161, 189, 167, 184, 184)
   arr3 = c(178, 186, 159, 167, 166, 164, 160, 164, 159, 172, 168, 170, 156, 158, 170, 176)
+  
+  minn = min(arr1, arr2, arr3)
+  maxx = max(arr1, arr2, arr3)
+  
+  X = seq.int(minn, maxx, 5)
+  r = length(X)
+  print(X)
+  
+  m = matrix(c(0), nrow=r, ncol=s)
+  
+  for (i in 1:(r-1)) {
+    
+    for(a1 in arr1) {
+     if(a1 >= X[i] && a1 < X[i+1]) {
+       m[i, 1] = m[i, 1] + 1
+     }
+    }
+    for(a2 in arr2) {
+      if(a2 >= X[i] && a2 < X[i+1]){
+        m[i, 2] = m[i, 2] + 1
+      }
+    }
+    for(a3 in arr3) {
+      if(a3 >= X[i] && a3 < X[i+1]){
+        m[i, 3] = m[i, 3] + 1
+      }
+    }
+  }
+  
+  for (a1 in arr1) {
+    if(a1 >= X[r]) {
+      m[r, 1] = m[r, 1] + 1
+    }
+  }
+  
+  
+  for (a2 in arr2) {
+    if(a2 >= X[r]) {
+      m[r, 2] = m[r, 2] + 1
+    }
+  }
+  
+  
+  for (a3 in arr3) {
+    if(a3 >= X[r]) {
+      m[r, 3] = m[r, 3] + 1
+    }
+  }
+  
+  nui = rowSums(m)
+  nuj = colSums(m)
+  
+  
+  nui = rowSums(m)
+  nj = colSums(m)
+
+  
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df=(r - 1) * (s - 1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat("p_value = ", p_value)
 ```
 
 ```{r}
