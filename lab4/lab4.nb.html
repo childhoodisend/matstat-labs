@@ -217,9 +217,8 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICAjMVxuXG4gIG51ID0gYyg5NjgsIDEwMjYsIDEwMjEsIDk3NCwgMTAxNCwgMTA0NiwgMTAyMSwgOTcwLCA5NDgsIDEwMTQpXG4gIG4gPSBzdW0obnUpXG4gIHAgPSAxLzEwICMgSDBcbiAgYWxwaGEgPSAwLjA1XG4gIHIgPSBsZW5ndGgobnUpXG4gIFxuICBQX25fbnUgPSBzdW0oKG51LW4qcCleMiAvIChuKnApKVxuICBcbiAgcSA9IHFjaGlzcSgxIC0gYWxwaGEsIGRmPShyLTEpKVxuICBcbiAgaWYgKFBfbl9udSA8IHEpIHtcbiAgICBjYXQoXFxITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gXFwsIGFscGhhLCBcXFxcblxcKVxuICB9XG5gYGBcbmBgYCJ9 -->
-<pre class="r"><code>```r
-  #1
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjMVxuXG4gIG51ID0gYyg5NjgsIDEwMjYsIDEwMjEsIDk3NCwgMTAxNCwgMTA0NiwgMTAyMSwgOTcwLCA5NDgsIDEwMTQpXG4gIG4gPSBzdW0obnUpXG4gIHAgPSAxLzEwICMgSDBcbiAgYWxwaGEgPSAwLjA1XG4gIHIgPSBsZW5ndGgobnUpXG4gIFxuICBQX25fbnUgPSBzdW0oKG51LW4qcCleMiAvIChuKnApKVxuICBcbiAgcSA9IHFjaGlzcSgxIC0gYWxwaGEsIGRmPShyLTEpKVxuICBcbiAgaWYgKFBfbl9udSA8IHEpIHtcbiAgICBjYXQoXCJITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gXCIsIGFscGhhLCBcIlxcblwiKVxuICB9XG5gYGAifQ== -->
+<pre class="r"><code>  #1
 
   nu = c(968, 1026, 1021, 974, 1014, 1046, 1021, 970, 948, 1014)
   n = sum(nu)
@@ -232,55 +231,27 @@ pre code {
   q = qchisq(1 - alpha, df=(r-1))
   
   if (P_n_nu &lt; q) {
-    cat(\HO accepted with alpha = \, alpha, \\n\)
+    cat(&quot;HO accepted with alpha = &quot;, alpha, &quot;\n&quot;)
   }</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICAwLjA1IFxuIn0= --&gt;
-</code></pre>
-<p>HO accepted with alpha = 0.05</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICBcbiAgcF92YWx1ZSA9IDEgLSBwY2hpc3EoUF9uX251LCBkZj0oci0xKSlcbiAgY2F0KFxccF92YWx1ZSA9IFxcLCBwX3ZhbHVlKVxuYGBgXG5gYGAifQ== --&gt;
-
-```r
-```r
-  
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICAwLjA1IFxuIn0= -->
+<pre><code>HO accepted with alpha =  0.05 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbiAgcF92YWx1ZSA9IDEgLSBwY2hpc3EoUF9uX251LCBkZj0oci0xKSlcbiAgY2F0KFwicF92YWx1ZSA9IFwiLCBwX3ZhbHVlKVxuYGBgIn0= -->
+<pre class="r"><code>  
   p_value = 1 - pchisq(P_n_nu, df=(r-1))
-  cat(\p_value = \, p_value)</code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjQwNDA0NTJcbiJ9 --&gt;
-</code></pre>
-<p>p_value = 0.4040452</p>
-<pre><code>
-
-
-&lt;!-- rnb-output-end --&gt;
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuICBcbmBgYFxuYGBgIn0= --&gt;
-
-```r
-```r
-  </code></pre>
-<pre><code>
-&lt;!-- rnb-source-end --&gt;
-
-&lt;!-- rnb-chunk-end --&gt;
-
-
-&lt;!-- rnb-chunk-begin --&gt;
-
-
-&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjMlxuICBuID0gNTc2XG4gIHhfaSA9IGMoMCwgMSwgMiwgMywgNCwgNSwgNiwgNylcbiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpXG4gIHIgPSBsZW5ndGgobnUpXG4gIGxhbWJkYSA9IHN1bSh4X2kpIC8gbGVuZ3RoKHhfaSlcbiAgXG4gIFBfbl9udSA9IHN1bSgobnUgLSBuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpLyAobipwcG9pcyh4X2ksIGxhbWJkYT1sYW1iZGEpKSlcbiAgXG4gIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpXG4gIGNhdChcInBfdmFsdWUgPSBcIiwgcF92YWx1ZSlcbmBgYCJ9 --&gt;
-
-```r
-  #2
+  cat(&quot;p_value = &quot;, p_value)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjQwNDA0NTJcbiJ9 -->
+<pre><code>p_value =  0.4040452</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjMlxuICBuID0gNTc2XG4gIHhfaSA9IGMoMCwgMSwgMiwgMywgNCwgNSwgNiwgNylcbiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpXG4gIHIgPSBsZW5ndGgobnUpXG4gIGxhbWJkYSA9IHN1bSh4X2kpIC8gbGVuZ3RoKHhfaSlcbiAgXG4gIFBfbl9udSA9IHN1bSgobnUgLSBuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpLyAobipwcG9pcyh4X2ksIGxhbWJkYT1sYW1iZGEpKSlcbiAgXG4gIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpXG4gIGNhdChcInBfdmFsdWUgPSBcIiwgcF92YWx1ZSlcbmBgYCJ9 -->
+<pre class="r"><code>  #2
   n = 576
   x_i = c(0, 1, 2, 3, 4, 5, 6, 7)
   nu = c(229, 211, 93, 35, 7, 0, 0, 1)
@@ -295,10 +266,8 @@ pre code {
 <!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjI5MDg1ODVcbiJ9 -->
 <pre><code>p_value =  0.2908585</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcblxuICBcbmBgYCJ9 -->
-<pre class="r"><code>  
-
-  </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
@@ -315,18 +284,183 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjNFxuICBhbHBoYSA9IDAuMDVcbiAgbSA9IG1hdHJpeChjKDksIDgsIDUsIDQsICAzLCA1LCA5LCAxMSksIG5yb3c9MiwgbmNvbD00LCBieXJvdz1UUlVFKVxuICBcbiAgXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjNFxuICBhbHBoYSA9IDAuMDVcbiAgciA9IDJcbiAgcyA9IDRcblxuICBtID0gbWF0cml4KGMoOSwgOCwgNSwgNCwgIDMsIDUsIDksIDExKSwgbnJvdz1yLCBuY29sPXMsIGJ5cm93PVRSVUUpXG4gIG51aSA9IHJvd1N1bXMobSlcbiAgbmogPSBjb2xTdW1zKG0pXG5cbiAgXG4gIFBfbl9udSA9IDBcbiAgZm9yIChpIGluIDE6cikge1xuICAgIGZvciAoaiBpbiAxOnMpIHtcbiAgICAgIFBfbl9udSA9IFBfbl9udSArIChtW2ksIGpdKioyIC8gKG5qW2pdICogbnVpW2ldKSlcbiAgICB9XG4gIH1cbiAgXG4gIFBfbl9udSA9IHN1bShuaikgKiAoUF9uX251IC0gMSlcbiAgXG4gIHEgPSBxY2hpc3EoMSAtIGFscGhhLCBkZj0ociAtIDEpICogKHMgLSAxKSlcbiAgXG4gIGlmIChQX25fbnUgPCBxKSB7XG4gICAgY2F0KFwiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9IFwiLCBhbHBoYSwgXCJcXG5cIilcbiAgfSBlbHNlIHtcbiAgICBjYXQoXCJITyByZWplY3RlZCB3aXRoIGFscGhhID0gXCIsIGFscGhhLCBcIlxcblwiKVxuICB9XG5gYGAifQ== -->
 <pre class="r"><code>  #4
   alpha = 0.05
-  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=2, ncol=4, byrow=TRUE)
+  r = 2
+  s = 4
+
+  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nj = colSums(m)
+
   
-  </code></pre>
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df=(r - 1) * (s - 1))
+  
+  if (P_n_nu &lt; q) {
+    cat(&quot;HO accepted with alpha = &quot;, alpha, &quot;\n&quot;)
+  } else {
+    cat(&quot;HO rejected with alpha = &quot;, alpha, &quot;\n&quot;)
+  }</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9ICAwLjA1IFxuIn0= -->
+<pre><code>HO rejected with alpha =  0.05 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbiAgcF92YWx1ZSA9IDEgLSBwY2hpc3EoUF9uX251LCBkZj0ociAtIDEpICogKHMgLSAxKSlcbiAgY2F0KFwicF92YWx1ZSA9IFwiLCBwX3ZhbHVlKVxuYGBgIn0= -->
+<pre class="r"><code>  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat(&quot;p_value = &quot;, p_value)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjA0NTIxNjkxXG4ifQ== -->
+<pre><code>p_value =  0.04521691</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjNVxuICBhbHBoYSA9IDAuMVxuICByID0gMlxuICBzID0gM1xuXG4gIG0gPSBtYXRyaXgoYygxNywgMjIsIDExLCA0MywgNzgsIDI5KSwgbnJvdz1yLCBuY29sPXMsIGJ5cm93PVRSVUUpXG4gIG51aSA9IHJvd1N1bXMobSlcbiAgbnVqID0gY29sU3VtcyhtKVxuICBcbiAgXG4gIFBfbl9udSA9IDBcbiAgZm9yIChpIGluIDE6cikge1xuICAgIGZvciAoaiBpbiAxOnMpIHtcbiAgICAgIFBfbl9udSA9IFBfbl9udSArIChtW2ksIGpdKioyIC8gKG51altqXSAqIG51aVtpXSkpXG4gICAgfVxuICB9XG4gIFxuICBQX25fbnUgPSBzdW0obnVqKSAqIChQX25fbnUgLSAxKVxuICBcbiAgcSA9IHFjaGlzcSgxIC0gYWxwaGEsIGRmID0gKHIgLSAxKSAqIChzIC0gMSkpXG4gIFxuICBpZiAoUF9uX251IDwgcSkge1xuICAgIGNhdChcIkhPIGFjY2VwdGVkIHdpdGggYWxwaGEgPSBcIiwgYWxwaGEsIFwiXFxuXCIpXG4gIH0gZWxzZSB7XG4gICAgY2F0KFwiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9IFwiLCBhbHBoYSwgXCJcXG5cIilcbiAgfVxuYGBgIn0= -->
+<pre class="r"><code>  #5
+  alpha = 0.1
+  r = 2
+  s = 3
+
+  m = matrix(c(17, 22, 11, 43, 78, 29), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nuj = colSums(m)
+  
+  
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nuj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nuj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df = (r - 1) * (s - 1))
+  
+  if (P_n_nu &lt; q) {
+    cat(&quot;HO accepted with alpha = &quot;, alpha, &quot;\n&quot;)
+  } else {
+    cat(&quot;HO rejected with alpha = &quot;, alpha, &quot;\n&quot;)
+  }</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICAwLjEgXG4ifQ== -->
+<pre><code>HO accepted with alpha =  0.1 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbmBgYCJ9 -->
+<pre class="r"><code>  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjNlxuICBhbHBoYSA9IDAuMDAxXG4gIHIgPSAzXG4gIHMgPSA0XG5cbiAgbSA9IG1hdHJpeChjKDE3NjgsIDgwNywgMTg5LCA0NywgMTE1LCA0MzgsIDI4OCwgMTYsIDk0NiwgMTM4NywgNzQ2LCA1MyksIG5yb3c9ciwgbmNvbD1zLCBieXJvdz1UUlVFKVxuICBudWkgPSByb3dTdW1zKG0pXG4gIG51aiA9IGNvbFN1bXMobSlcbiAgXG4gIFxuICBQX25fbnUgPSAwXG4gIGZvciAoaSBpbiAxOnIpIHtcbiAgICBmb3IgKGogaW4gMTpzKSB7XG4gICAgICBQX25fbnUgPSBQX25fbnUgKyAobVtpLCBqXSoqMiAvIChudWpbal0gKiBudWlbaV0pKVxuICAgIH1cbiAgfVxuICBcbiAgUF9uX251ID0gc3VtKG51aikgKiAoUF9uX251IC0gMSlcbiAgXG4gIHEgPSBxY2hpc3EoMSAtIGFscGhhLCBkZiA9IChyIC0gMSkgKiAocyAtIDEpKVxuICBcbiAgaWYgKFBfbl9udSA8IHEpIHtcbiAgICBjYXQoXCJITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gXCIsIGFscGhhLCBcIlxcblwiKVxuICB9IGVsc2Uge1xuICAgIGNhdChcIkhPIHJlamVjdGVkIHdpdGggYWxwaGEgPSBcIiwgYWxwaGEsIFwiXFxuXCIpXG4gIH1cbiAgXG4gIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHIgLSAxKSAqIChzIC0gMSkpXG4gIGNhdChcInBfdmFsdWUgPSBcIiwgcF92YWx1ZSlcblxuYGBgIn0= -->
+<pre class="r"><code>  #6
+  alpha = 0.001
+  r = 3
+  s = 4
+
+  m = matrix(c(1768, 807, 189, 47, 115, 438, 288, 16, 946, 1387, 746, 53), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nuj = colSums(m)
+  
+  
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nuj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nuj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df = (r - 1) * (s - 1))
+  
+  if (P_n_nu &lt; q) {
+    cat(&quot;HO accepted with alpha = &quot;, alpha, &quot;\n&quot;)
+  } else {
+    cat(&quot;HO rejected with alpha = &quot;, alpha, &quot;\n&quot;)
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat(&quot;p_value = &quot;, p_value)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjN1xuICAjNFxuICBhbHBoYSA9IDAuMDVcbiAgciA9IDNcbiAgcyA9IDIzXG5cbiAgXG4gIG0gPSBtYXRyaXgoYygxODIsIDE2OSwgMTgyLCAxNzYsIDE4MCwgMTcwLCAxNzQsIDE4MiwgMTczLCAxODIsIDE4MCwgMTY4LCAxNjUsXG4gICAgICAgICAgICAgICAxNjcsIDE3MCwgMTY0LCAxODgsIDE4MiwgMTkwLCAxNjIsIDE2NCwgMTYwLCAxNjcsIDE2MywgMTg1LCAxNTYsIDE5NCwgMTc0LCAxNjEsIDE4NSwgMTU5LCAxNjEsIDE4OSwgMTY3LCAxODQsIDE4NCxcbiAgICAgICAgICAgICAgIDE3OCwgMTg2LCAxNTksIDE2NywgMTY2LCAxNjQsIDE2MCwgMTY0LCAxNTksIDE3MiwgMTY4LCAxNzAsIDE1NiwgMTU4LCAxNzAsIDE3NiksIG5yb3c9cywgbmNvbD1yKVxuYGBgIn0= -->
+<pre class="r"><code>  #7
+  #4
+  alpha = 0.05
+  r = 3
+  s = 23
+
+  
+  m = matrix(c(182, 169, 182, 176, 180, 170, 174, 182, 173, 182, 180, 168, 165,
+               167, 170, 164, 188, 182, 190, 162, 164, 160, 167, 163, 185, 156, 194, 174, 161, 185, 159, 161, 189, 167, 184, 184,
+               178, 186, 159, 167, 166, 164, 160, 164, 159, 172, 168, 170, 156, 158, 170, 176), nrow=s, ncol=r)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBpbiBtYXRyaXgoYygxODIsIDE2OSwgMTgyLCAxNzYsIDE4MCwgMTcwLCAxNzQsIDE4MiwgMTczLCAxODIsIDE4MCwgIDpcbiAgZGF0YSBsZW5ndGggWzUyXSBpcyBub3QgYSBzdWItbXVsdGlwbGUgb3IgbXVsdGlwbGUgb2YgdGhlIG51bWJlciBvZiByb3dzIFsyM11cbiJ9 -->
+<pre><code>Warning in matrix(c(182, 169, 182, 176, 180, 170, 174, 182, 173, 182, 180,  :
+  data length [52] is not a sub-multiple or multiple of the number of rows [23]</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBudWkgPSByb3dTdW1zKG0pXG4gIG5qID0gY29sU3VtcyhtKVxuXG4gIFxuICBQX25fbnUgPSAwXG4gIGZvciAoaSBpbiAxOnMpIHtcbiAgICBmb3IgKGogaW4gMTpyKSB7XG4gICAgICBQX25fbnUgPSBQX25fbnUgKyAobVtpLCBqXSoqMiAvIChualtqXSAqIG51aVtpXSkpXG4gICAgfVxuICB9XG4gIFxuICBQX25fbnUgPSBzdW0obmopICogKFBfbl9udSAtIDEpXG4gIFxuICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGY9KHIgLSAxKSAqIChzIC0gMSkpXG4gIFxuICBpZiAoUF9uX251IDwgcSkge1xuICAgIGNhdChcIkhPIGFjY2VwdGVkIHdpdGggYWxwaGEgPSBcIiwgYWxwaGEsIFwiXFxuXCIpXG4gIH0gZWxzZSB7XG4gICAgY2F0KFwiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9IFwiLCBhbHBoYSwgXCJcXG5cIilcbiAgfVxuYGBgIn0= -->
+<pre class="r"><code>  nui = rowSums(m)
+  nj = colSums(m)
+
+  
+  P_n_nu = 0
+  for (i in 1:s) {
+    for (j in 1:r) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df=(r - 1) * (s - 1))
+  
+  if (P_n_nu &lt; q) {
+    cat(&quot;HO accepted with alpha = &quot;, alpha, &quot;\n&quot;)
+  } else {
+    cat(&quot;HO rejected with alpha = &quot;, alpha, &quot;\n&quot;)
+  }</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICAwLjA1IFxuIn0= -->
+<pre><code>HO accepted with alpha =  0.05 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICBcbiAgcF92YWx1ZSA9IDEgLSBwY2hpc3EoUF9uX251LCBkZj0ociAtIDEpICogKHMgLSAxKSlcbiAgY2F0KFwicF92YWx1ZSA9IFwiLCBwX3ZhbHVlKVxuYGBgIn0= -->
+<pre class="r"><code>  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat(&quot;p_value = &quot;, p_value)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicF92YWx1ZSA9ICAwLjk5MTA2NjRcbiJ9 -->
+<pre><code>p_value =  0.9910664</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuICAjOFxuYGBgIn0= -->
+<pre class="r"><code>  #8</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KICAjMQoKICBudSA9IGMoOTY4LCAxMDI2LCAxMDIxLCA5NzQsIDEwMTQsIDEwNDYsIDEwMjEsIDk3MCwgOTQ4LCAxMDE0KQogIG4gPSBzdW0obnUpCiAgcCA9IDEvMTAgIyBIMAogIGFscGhhID0gMC4wNQogIHIgPSBsZW5ndGgobnUpCiAgCiAgUF9uX251ID0gc3VtKChudS1uKnApXjIgLyAobipwKSkKICAKICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGY9KHItMSkpCiAgCiAgaWYgKFBfbl9udSA8IHEpIHsKICAgIGNhdCgiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKICBwX3ZhbHVlID0gMSAtIHBjaGlzcShQX25fbnUsIGRmPShyLTEpKQogIGNhdCgicF92YWx1ZSA9ICIsIHBfdmFsdWUpCiAgCmBgYApgYGB7cn0KICAjMgogIG4gPSA1NzYKICB4X2kgPSBjKDAsIDEsIDIsIDMsIDQsIDUsIDYsIDcpCiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpCiAgciA9IGxlbmd0aChudSkKICBsYW1iZGEgPSBzdW0oeF9pKSAvIGxlbmd0aCh4X2kpCiAgCiAgUF9uX251ID0gc3VtKChudSAtIG4qcHBvaXMoeF9pLCBsYW1iZGE9bGFtYmRhKSkvIChuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpKQogIAogIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpCiAgY2F0KCJwX3ZhbHVlID0gIiwgcF92YWx1ZSkKICAKYGBgCmBgYHtyfQogICMzCiAgbiA9IDUwCiAgYWxwaGEgPSAwLjEKICB4X2kgPSBjKC0wLjUsIDAuNSwgMS41LCAzLjUpCiAgbnUgPSBjKDcsIDI1LCA4LCAxMCkKICAjZXN0aW1hdGUgcGFyYW1zIG11IHNpZ21hX3NxCiAgCmBgYAoKYGBge3J9CiAgIzQKICBhbHBoYSA9IDAuMDUKICBtID0gbWF0cml4KGMoOSwgOCwgNSwgNCwgIDMsIDUsIDksIDExKSwgbnJvdz0yLCBuY29sPTQsIGJ5cm93PVRSVUUpCiAgCiAgCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi0JvQsNCx0L7RgNCw0YLQvtGA0L3QsNGPINGA0LDQsdC+0YLQsCAzIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpgYGB7cn0KICAjMQoKICBudSA9IGMoOTY4LCAxMDI2LCAxMDIxLCA5NzQsIDEwMTQsIDEwNDYsIDEwMjEsIDk3MCwgOTQ4LCAxMDE0KQogIG4gPSBzdW0obnUpCiAgcCA9IDEvMTAgIyBIMAogIGFscGhhID0gMC4wNQogIHIgPSBsZW5ndGgobnUpCiAgCiAgUF9uX251ID0gc3VtKChudS1uKnApXjIgLyAobipwKSkKICAKICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGY9KHItMSkpCiAgCiAgaWYgKFBfbl9udSA8IHEpIHsKICAgIGNhdCgiSE8gYWNjZXB0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKICBwX3ZhbHVlID0gMSAtIHBjaGlzcShQX25fbnUsIGRmPShyLTEpKQogIGNhdCgicF92YWx1ZSA9ICIsIHBfdmFsdWUpCiAgCmBgYApgYGB7cn0KICAjMgogIG4gPSA1NzYKICB4X2kgPSBjKDAsIDEsIDIsIDMsIDQsIDUsIDYsIDcpCiAgbnUgPSBjKDIyOSwgMjExLCA5MywgMzUsIDcsIDAsIDAsIDEpCiAgciA9IGxlbmd0aChudSkKICBsYW1iZGEgPSBzdW0oeF9pKSAvIGxlbmd0aCh4X2kpCiAgCiAgUF9uX251ID0gc3VtKChudSAtIG4qcHBvaXMoeF9pLCBsYW1iZGE9bGFtYmRhKSkvIChuKnBwb2lzKHhfaSwgbGFtYmRhPWxhbWJkYSkpKQogIAogIHBfdmFsdWUgPSAxIC0gcGNoaXNxKFBfbl9udSwgZGY9KHItMSkpCiAgY2F0KCJwX3ZhbHVlID0gIiwgcF92YWx1ZSkKICAKYGBgCmBgYHtyfQogICMzCiAgbiA9IDUwCiAgYWxwaGEgPSAwLjEKICB4X2kgPSBjKC0wLjUsIDAuNSwgMS41LCAzLjUpCiAgbnUgPSBjKDcsIDI1LCA4LCAxMCkKICAjZXN0aW1hdGUgcGFyYW1zIG11IHNpZ21hX3NxCiAgCmBgYAoKYGBge3J9CiAgIzQKICBhbHBoYSA9IDAuMDUKICByID0gMgogIHMgPSA0CgogIG0gPSBtYXRyaXgoYyg5LCA4LCA1LCA0LCAgMywgNSwgOSwgMTEpLCBucm93PXIsIG5jb2w9cywgYnlyb3c9VFJVRSkKICBudWkgPSByb3dTdW1zKG0pCiAgbmogPSBjb2xTdW1zKG0pCgogIAogIFBfbl9udSA9IDAKICBmb3IgKGkgaW4gMTpyKSB7CiAgICBmb3IgKGogaW4gMTpzKSB7CiAgICAgIFBfbl9udSA9IFBfbl9udSArIChtW2ksIGpdKioyIC8gKG5qW2pdICogbnVpW2ldKSkKICAgIH0KICB9CiAgCiAgUF9uX251ID0gc3VtKG5qKSAqIChQX25fbnUgLSAxKQogIAogIHEgPSBxY2hpc3EoMSAtIGFscGhhLCBkZj0ociAtIDEpICogKHMgLSAxKSkKICAKICBpZiAoUF9uX251IDwgcSkgewogICAgY2F0KCJITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gIiwgYWxwaGEsICJcbiIpCiAgfSBlbHNlIHsKICAgIGNhdCgiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKICBwX3ZhbHVlID0gMSAtIHBjaGlzcShQX25fbnUsIGRmPShyIC0gMSkgKiAocyAtIDEpKQogIGNhdCgicF92YWx1ZSA9ICIsIHBfdmFsdWUpCiAgCmBgYApgYGB7cn0KICAjNQogIGFscGhhID0gMC4xCiAgciA9IDIKICBzID0gMwoKICBtID0gbWF0cml4KGMoMTcsIDIyLCAxMSwgNDMsIDc4LCAyOSksIG5yb3c9ciwgbmNvbD1zLCBieXJvdz1UUlVFKQogIG51aSA9IHJvd1N1bXMobSkKICBudWogPSBjb2xTdW1zKG0pCiAgCiAgCiAgUF9uX251ID0gMAogIGZvciAoaSBpbiAxOnIpIHsKICAgIGZvciAoaiBpbiAxOnMpIHsKICAgICAgUF9uX251ID0gUF9uX251ICsgKG1baSwgal0qKjIgLyAobnVqW2pdICogbnVpW2ldKSkKICAgIH0KICB9CiAgCiAgUF9uX251ID0gc3VtKG51aikgKiAoUF9uX251IC0gMSkKICAKICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGYgPSAociAtIDEpICogKHMgLSAxKSkKICAKICBpZiAoUF9uX251IDwgcSkgewogICAgY2F0KCJITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gIiwgYWxwaGEsICJcbiIpCiAgfSBlbHNlIHsKICAgIGNhdCgiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKYGBgCmBgYHtyfQogICM2CiAgYWxwaGEgPSAwLjAwMQogIHIgPSAzCiAgcyA9IDQKCiAgbSA9IG1hdHJpeChjKDE3NjgsIDgwNywgMTg5LCA0NywgMTE1LCA0MzgsIDI4OCwgMTYsIDk0NiwgMTM4NywgNzQ2LCA1MyksIG5yb3c9ciwgbmNvbD1zLCBieXJvdz1UUlVFKQogIG51aSA9IHJvd1N1bXMobSkKICBudWogPSBjb2xTdW1zKG0pCiAgCiAgCiAgUF9uX251ID0gMAogIGZvciAoaSBpbiAxOnIpIHsKICAgIGZvciAoaiBpbiAxOnMpIHsKICAgICAgUF9uX251ID0gUF9uX251ICsgKG1baSwgal0qKjIgLyAobnVqW2pdICogbnVpW2ldKSkKICAgIH0KICB9CiAgCiAgUF9uX251ID0gc3VtKG51aikgKiAoUF9uX251IC0gMSkKICAKICBxID0gcWNoaXNxKDEgLSBhbHBoYSwgZGYgPSAociAtIDEpICogKHMgLSAxKSkKICAKICBpZiAoUF9uX251IDwgcSkgewogICAgY2F0KCJITyBhY2NlcHRlZCB3aXRoIGFscGhhID0gIiwgYWxwaGEsICJcbiIpCiAgfSBlbHNlIHsKICAgIGNhdCgiSE8gcmVqZWN0ZWQgd2l0aCBhbHBoYSA9ICIsIGFscGhhLCAiXG4iKQogIH0KICAKICBwX3ZhbHVlID0gMSAtIHBjaGlzcShQX25fbnUsIGRmPShyIC0gMSkgKiAocyAtIDEpKQogIGNhdCgicF92YWx1ZSA9ICIsIHBfdmFsdWUpCgpgYGAKCmBgYHtyfQogICM3CiAgYWxwaGEgPSAwLjAxCiAgciA9IDAKICBzID0gMAoKICAjINGA0LDQt9Cx0LjRgtGMINC90LAg0LPRgNGD0L/Qv9GLCiAgCiAgYXJyMSA9IGMoMTgyLCAxNjksIDE4MiwgMTc2LCAxODAsIDE3MCwgMTc0LCAxODIsIDE3MywgMTgyLCAxODAsIDE2OCwgMTY1KQogIGFycjIgPSBjKDE2NywgMTcwLCAxNjQsIDE4OCwgMTgyLCAxOTAsIDE2MiwgMTY0LCAxNjAsIDE2NywgMTYzLCAxODUsIDE1NiwgMTk0LCAxNzQsIDE2MSwgMTg1LCAxNTksIDE2MSwgMTg5LCAxNjcsIDE4NCwgMTg0KQogIGFycjMgPSBjKDE3OCwgMTg2LCAxNTksIDE2NywgMTY2LCAxNjQsIDE2MCwgMTY0LCAxNTksIDE3MiwgMTY4LCAxNzAsIDE1NiwgMTU4LCAxNzAsIDE3NikKYGBgCgpgYGB7cn0KICAjOApgYGAKCgo=</div>
 
 
 

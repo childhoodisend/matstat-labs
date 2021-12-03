@@ -51,8 +51,112 @@ output: html_notebook
 ```{r}
   #4
   alpha = 0.05
-  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=2, ncol=4, byrow=TRUE)
+  r = 2
+  s = 4
+
+  m = matrix(c(9, 8, 5, 4,  3, 5, 9, 11), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nj = colSums(m)
+
   
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df=(r - 1) * (s - 1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat("p_value = ", p_value)
   
 ```
+```{r}
+  #5
+  alpha = 0.1
+  r = 2
+  s = 3
+
+  m = matrix(c(17, 22, 11, 43, 78, 29), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nuj = colSums(m)
+  
+  
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nuj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nuj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df = (r - 1) * (s - 1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
+```
+```{r}
+  #6
+  alpha = 0.001
+  r = 3
+  s = 4
+
+  m = matrix(c(1768, 807, 189, 47, 115, 438, 288, 16, 946, 1387, 746, 53), nrow=r, ncol=s, byrow=TRUE)
+  nui = rowSums(m)
+  nuj = colSums(m)
+  
+  
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nuj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nuj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df = (r - 1) * (s - 1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r - 1) * (s - 1))
+  cat("p_value = ", p_value)
+
+```
+
+```{r}
+  #7
+  alpha = 0.01
+  r = 0
+  s = 0
+
+  # разбить на группы
+  
+  arr1 = c(182, 169, 182, 176, 180, 170, 174, 182, 173, 182, 180, 168, 165)
+  arr2 = c(167, 170, 164, 188, 182, 190, 162, 164, 160, 167, 163, 185, 156, 194, 174, 161, 185, 159, 161, 189, 167, 184, 184)
+  arr3 = c(178, 186, 159, 167, 166, 164, 160, 164, 159, 172, 168, 170, 156, 158, 170, 176)
+```
+
+```{r}
+  #8
+```
+
 
