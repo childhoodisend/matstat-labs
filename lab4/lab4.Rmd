@@ -32,7 +32,7 @@ output: html_notebook
   r = length(nu)
   lambda = sum(x_i) / length(x_i)
   
-  P_n_nu = sum((nu - n*ppois(x_i, lambda=lambda))/ (n*ppois(x_i, lambda=lambda)))
+  P_n_nu = sum((nu - n*ppois(x_i, lambda=lambda))^2 / (n*ppois(x_i, lambda=lambda)))
   
   p_value = 1 - pchisq(P_n_nu, df=(r-1))
   cat("p_value = ", p_value)
@@ -44,7 +44,23 @@ output: html_notebook
   alpha = 0.1
   x_i = c(-0.5, 0.5, 1.5, 3.5)
   nu = c(7, 25, 8, 10)
-  #estimate params mu sigma_sq
+  r = length(nu)
+  
+  mu = mean(x_i)
+  sigma_sq = var(x_i)
+  
+  P_n_nu = sum((nu - n*pnorm(x_i, mean = mu, sd = sigma_sq))^2 / (n*pnorm(x_i, mean = mu, sd = sigma_sq)))
+  
+  q = qchisq(1 - alpha, df=(r-1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
+  p_value = 1 - pchisq(P_n_nu, df=(r-1))
+  cat("p_value = ", p_value)
   
 ```
 
@@ -159,7 +175,6 @@ output: html_notebook
   
   X = seq.int(minn, maxx, 5)
   r = length(X)
-  print(X)
   
   m = matrix(c(0), nrow=r, ncol=s)
   
