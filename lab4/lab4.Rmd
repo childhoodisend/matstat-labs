@@ -203,13 +203,8 @@ output: html_notebook
   }
   
   nui = rowSums(m)
-  nuj = colSums(m)
-  
-  
-  nui = rowSums(m)
   nj = colSums(m)
 
-  
   P_n_nu = 0
   for (i in 1:r) {
     for (j in 1:s) {
@@ -233,6 +228,69 @@ output: html_notebook
 
 ```{r}
   #8
+
+  alpha = 0.1
+  s = 2  
+
+  arr1 = rnorm(100, mean=0, sd=2)
+  arr2 = rnorm(150, mean=-1, sd=4)
+  
+  minn = min(arr1, arr2)
+  maxx = max(arr1, arr2)
+  
+  X = seq.int(minn, maxx, abs(maxx + minn))
+  
+  r = length(X)
+  
+  m = matrix(c(0), nrow=r, ncol=s)
+  
+  for (i in 1:(r-1)) {
+    
+    for(a1 in arr1) {
+     if(a1 >= X[i] && a1 < X[i+1]) {
+       m[i, 1] = m[i, 1] + 1
+     }
+    }
+    for(a2 in arr2) {
+      if(a2 >= X[i] && a2 < X[i+1]){
+        m[i, 2] = m[i, 2] + 1
+      }
+    }
+  }
+  
+  for (a1 in arr1) {
+    if(a1 >= X[r]) {
+      m[r, 1] = m[r, 1] + 1
+    }
+  }
+  
+  
+  for (a2 in arr2) {
+    if(a2 >= X[r]) {
+      m[r, 2] = m[r, 2] + 1
+    }
+  }
+  
+  nui = rowSums(m)
+  nj = colSums(m)
+
+  P_n_nu = 0
+  for (i in 1:r) {
+    for (j in 1:s) {
+      P_n_nu = P_n_nu + (m[i, j]**2 / (nj[j] * nui[i]))
+    }
+  }
+  
+  P_n_nu = sum(nj) * (P_n_nu - 1)
+  
+  q = qchisq(1 - alpha, df=(r - 1) * (s - 1))
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+  
 ```
 
 
