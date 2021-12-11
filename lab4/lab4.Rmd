@@ -26,30 +26,30 @@ output: html_notebook
 ```
 ```{r}
   #2
-  n = 576
-  x_i = c(0, 1, 2, 3, 4, 5, 6, 7)
-  nu = c(229, 211, 93, 35, 7, 0, 0, 1)
+  n = 537
+  x_i = c(0, 1, 2, 3, 4, 7)
+  nu = c(229, 211, 93, 35, 7, 1)
+ 
   r = length(nu)
-  lambda = sum(x_i) / length(x_i)
-  
+  lambda = sum(x_i*nu)/n
+
   P_n_nu = sum((nu - n*ppois(x_i, lambda=lambda))^2 / (n*ppois(x_i, lambda=lambda)))
   
   p_value = 1 - pchisq(P_n_nu, df=(r-1))
   cat("p_value = ", p_value)
-  
 ```
 ```{r}
   #3
   n = 50
   alpha = 0.1
-  x_i = c(-0.5, 0.5, 1.5, 3.5)
+  x_i = c(-0.5, 0.5, 1.5, 3)
   nu = c(7, 25, 8, 10)
   r = length(nu)
   
   mu = mean(x_i)
-  sigma_sq = var(x_i)
+  sd = sd(x_i)
   
-  P_n_nu = sum((nu - n*pnorm(x_i, mean = mu, sd = sigma_sq))^2 / (n*pnorm(x_i, mean = mu, sd = sigma_sq)))
+  P_n_nu = sum((nu - n*pnorm(x_i, mean=mu, sd=sd))^2 / (n*pnorm(x_i, mean=mu, sd=sd)))
   
   q = qchisq(1 - alpha, df=(r-1))
   
