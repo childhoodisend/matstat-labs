@@ -1,19 +1,71 @@
 ---
-title: "Лабораторная работа 3"
+title: "Лабораторная работа 4"
 output: html_notebook
 ---
 
+Смоделировать выборку из биномиального распределения (функция rbinom()) с
+заданными параметрами. Оценить по выборке математическое ожидание, т.е. вычислить
+$\bar{X}$. Используя критерий Пирсона (хи-квадрат) проверить гипотезу о том, что выборка
+действительно соответствует моделируемому распределению.
+
+
 ```{r}
-#1
-  n <- 1000
-  k <- seq(0, n, by = 2)
+  #1.1
+  n <- 10
   p <- 0.3
-  x <- rbinom(k, size=n, prob=p)
+  size <- 5
+  x <- rbinom(n, size=size, prob=p)
 
   
-  mu <- mean(x)
+  t = table(x) # freq table
+  nu <- as.vector(t) # vector of freq
+  r = length(nu)
+  
+  pj = pbinom(sort(unique(x)), size=size, prob=p)
+  
+  P_n_nu_binom = sum((nu-n*pj)^2 / (n*pj)) # Pearson's statistics pbinom
   
   
-  P_n_nu = sum((nu-n*p)^2 / (n*p))
+  alpha = 0.05
+  q = qchisq(1 - alpha, df=(r - 1))
+  
+  cat("q = ", q, "\n")
+  cat("P_n_nu_binom = ", P_n_nu_binom, "\n")
+  
+  if (P_n_nu_binom < q) {
+    cat("HO(Binom) accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO(Binom) rejected with alpha = ", alpha, "\n")
+  }
 ```
+
+Проверить гипотезу о том, что полученные при моделировании данные имеют
+распределение Пуассона с параметром $\lambda = \bar{X}$ (предположительно вторая гипотеза должна
+быть отвергнута критерием).
+
+```{r}
+  #1.2
+  lambda = mean(x)
+  cat("Mean = ", lambda, "\n")
+  
+  pj = ppois(sort(unique(x)), lambda=lambda)
+  P_n_nu_ppois = sum((nu-n*pj)^2 / (n*pj)) # Pearson's statistics ppois
+  
+  cat("P_n_nu_ppois = ", P_n_nu_ppois, "\n")
+  
+  if (P_n_nu_ppois < q) {
+    cat("HO(Poisson) accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO(Poisson) rejected with alpha = ", alpha, "\n")
+  }
+```
+
+
+
+
+```{r}
+  #2.1
+  
+```
+
 
