@@ -1,0 +1,130 @@
+---
+title: "Лабораторная работа 4. Задача 2"
+output: html_notebook
+---
+
+Для своего распределения (из лаб. работ 1-2) на уровне значимости $\alpha = 0.05$ проверить
+гипотезу о том, что выборка действительно соответствует моделируемому распределению
+(т. е. проверить качество моделирования). Использовать критерии Колмогорова и
+Пирсона (хи-квадрат).
+
+
+```{r}
+  F <- function(x, p1, p2) { 
+    # distribution mix 
+    return ( p1 * pnorm(x, mean=0, sd=4) + p2 * (0.5 + (1/pi) * asin(x/5)) + (1 - p1 - p2) * punif(x, 0, 5))
+  }
+```
+
+```{r}
+  n = 1000
+
+  U1 = rnorm(n, mean=0, sd=4) # norm distribution
+  U  = runif(n, min=0, max=1)  
+  U2 = 3*sin(pi/2 * (2*U - 1))# arcsin distribution, Smirnov method
+  U3 = runif(n, min=0, max=5) # uniform distribution
+  
+  
+  p1 = 0.1
+  p2 = 0.2
+  random_vector = runif(n, 0, 1)
+  mixed = U1*(random_vector <= p1) + U2*(random_vector >= p1 & random_vector < p1 + p2) + U3*(random_vector > p1 + p2)
+  
+```
+
+```{r}
+  x = seq(-3, 3, 0.1)
+  plot(x, F(x, p1=p1, p2=p2), main = "Distribution F, F_n", type="l", col="dark blue", lwd=2)
+  lines(ecdf(mixed), col="dark red", lwd=2)
+```
+
+```{r}
+  #2.1
+  #Chisq
+
+  a = -5
+  b = 5
+  delta = seq(a, b, by=0.1)
+  nu = seq(from=0, to=0, length=length(delta))
+  r = length(nu)
+  
+  # -----calculate vector of freq-----
+  for (i in 2:(length(delta) - 1)){
+      for (j in mixed){
+      if ((delta[i] < j) && (j <= delta[i+1])){
+        nu[i] = nu[i] + 1
+      }
+    }  
+  }
+  for (j in mixed) {
+    if (j <= delta[1]) {
+      nu[1] = nu[1] + 1
+    }
+    if (j > delta[length(delta)]) {
+      nu[length(nu)] = nu[length(nu)] + 1
+    }
+  }
+  # -----calculate vector of freq-----
+  
+  cat("Nu sum = ", sum(nu), "\n")
+  cat("Nu = ", nu, "\n")
+```
+
+```{r}
+  pj = F(delta, p1=p1, p2=p2)
+  P_n_nu = sum((nu-n*pj)^2 / (n*pj)) # Pearson's statistics mixed
+  
+  alpha = 0.05
+  q = qchisq(1 - alpha, df=(r - 1))
+  
+  cat("q = ", q, "\n")
+  cat("P_n_nu = ", P_n_nu, "\n")
+  
+  if (P_n_nu < q) {
+    cat("HO accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO rejected with alpha = ", alpha, "\n")
+  }
+```
+```{r}
+  #2.1
+  #Kolmogorov
+
+
+```
+
+
+Используя эти же два критерия, проверить гипотезу о принадлежности данной выборки
+нормальному закону (предположительно последняя гипотеза должна быть отвергнута
+обоими критериями). (В $R$ есть функции chisq.test, norm.test(), проверяющие гипотезу о
+нормальности)
+
+```{r}
+  #2.2
+  #Chisq
+
+  pj = pnorm(delta, mean=mean(mixed), sd=sd(mixed))
+  P_n_nu_norm = sum((nu-n*pj)^2 / (n*pj)) # Pearson's statistics mixed norm
+  
+  alpha = 0.05
+  q = qchisq(1 - alpha, df=(r - 1))
+  
+  cat("q = ", q, "\n")
+  cat("P_n_nu_norm = ", P_n_nu, "\n")
+  
+  if (P_n_nu_ < q) {
+    cat("HO(norm) accepted with alpha = ", alpha, "\n")
+  } else {
+    cat("HO(norm) rejected with alpha = ", alpha, "\n")
+  }
+
+```
+
+
+```{r}
+  #2.2
+  #Kolmogorov
+
+```
+
+
