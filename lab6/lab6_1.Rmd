@@ -1,0 +1,37 @@
+---
+title: "Лабораторная работа 5. Задача 1"
+output: html_notebook
+---
+
+
+```{r}
+  n = 1000
+  m = 100
+  
+  X = rnorm(n, mean=0, sd=1)
+  Y = rexp(n, rate=1)
+  
+  for (i in (n-m):n) {
+    Y[i] = Y[i] + X[i]
+  }
+  
+  Ri = rank(X)
+  Si = rank(Y)
+  
+  #Spirman
+  alpha = 0.1
+  za = qnorm(1-(alpha/2), mean=0, sd=1)
+  
+  ps = 1 - 6/(n*(n^2 - 1))*sum((Ri-Si)^2)
+  cat("ps = ", ps, "\n")
+  
+  if (sqrt(n)*abs(ps) > za) {
+    cat("H0 rejected with alpha = ", alpha, "\n")
+  } else {
+    cat("H0 accepted with alpha = ", alpha, "\n")
+  }
+  
+  
+```
+
+

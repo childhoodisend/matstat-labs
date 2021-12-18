@@ -1,0 +1,60 @@
+---
+title: "Лабораторная работа 5. Задача 2"
+output: html_notebook
+---
+
+
+
+```{r}
+  #Wilkokson homogeneity
+  n = 500
+  m = 600
+  
+  X = rnorm(n, mean=0, sd=1)
+  Y = rnorm(m, mean=0, sd=1)
+  
+  Z = c(X, Y)
+  Ri = rank(Z)
+  Ri = Ri[1:n]
+  
+  Tnm = sum(Ri)
+  Tnm0 = (Tnm - n/2*(n + m + 1))/(sqrt(((m*n)/12) * (m + n + 1)))
+
+  alpha = 0.01
+  za = qnorm(1 - alpha/2)
+  
+  if (abs(Tnm0) > za) {
+    cat("H0 rejected with alpha = ", alpha, "\n")
+  } else {
+    cat("H0 accepted with alpha = ", alpha, "\n")
+  }
+```
+```{r}
+  #Wilkokson heterogeneity
+  n = 500
+  m = 600
+  s = 300
+  
+  X = rnorm(n, mean=0, sd=1)
+  Y = rnorm(m, mean=0, sd=1)
+  S = rexp(s, rate=1)
+  Y = c(S, Y[m-s:m])
+  
+  
+  Z = c(X, Y)
+  Ri = rank(Z)
+  Ri = Ri[1:n]
+  
+  Tnm = sum(Ri)
+  Tnm0 = (Tnm - n/2*(n + m + 1))/(sqrt(((m*n)/12) * (m + n + 1)))
+
+  alpha = 0.01
+  za = qnorm(1 - alpha/2)
+  
+  if (abs(Tnm0) > za) {
+    cat("H0 rejected with alpha = ", alpha, "\n")
+  } else {
+    cat("H0 accepted with alpha = ", alpha, "\n")
+  }
+```
+
