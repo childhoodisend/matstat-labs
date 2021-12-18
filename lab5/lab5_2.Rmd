@@ -12,9 +12,24 @@ output: html_notebook
 ```{r}
   F <- function(x, p1, p2) { 
     # distribution mix 
-    return ( p1 * pnorm(x, mean=0, sd=4) + p2 * (0.5 + (1/pi) * asin(x/5)) + (1 - p1 - p2) * punif(x, 0, 5))
+    ans = seq(from=0, to=0, length=length(x))
+    
+    for (i in 1:length(x)) {
+      if (x[i] >= -3 && x[i] <= 3) {
+        ans[i] = (p1 * pnorm(x[i], mean=0, sd=4) + p2 * (0.5 + (1/pi) * asin(x[i]/3)) + (1 - p1 - p2) * punif(x[i], 0, 5))
+      }
+      if (x[i] < -3) {
+        ans[i] = (p1 * pnorm(x[i], mean=0, sd=4) + (1 - p1 - p2) * punif(x[i], 0, 5))
+      }
+      if (x[i] > 3) {
+        ans[i] = (p1 * pnorm(x[i], mean=0, sd=4) + p2*1 + (1 - p1 - p2) * punif(x[i], 0, 5))
+      }
+    }
+   
+    return (ans)
   }
 ```
+
 
 ```{r}
   n = 1000
@@ -28,50 +43,45 @@ output: html_notebook
   p1 = 0.1
   p2 = 0.2
   random_vector = runif(n, 0, 1)
-  mixed = U1*(random_vector <= p1) + U2*(random_vector >= p1 & random_vector < p1 + p2) + U3*(random_vector > p1 + p2)
+  mixed = U1*(random_vector <= p1) + U2*(random_vector >= p1 & random_vector < p1 + p2) + U3*(random_vector >= p1 + p2)
   
 ```
 
 ```{r}
-  x = seq(-3, 3, 0.1)
-  plot(x, F(x, p1=p1, p2=p2), main = "Distribution F, F_n", type="l", col="dark blue", lwd=2)
+  x = seq(-10, 10, 0.1)
+  y = F(x, p1=p1, p2=p2)
+  
+  plot(x, y, main = "Distribution F, F_n", type="l", col="dark blue", lwd=2)
   lines(ecdf(mixed), col="dark red", lwd=2)
 ```
 
 ```{r}
   #2.1
   #Chisq
-
-  a = -5
-  b = 5
-  delta = seq(a, b, by=0.1)
-  nu = seq(from=0, to=0, length=length(delta))
-  r = length(nu)
+  m = 0.1
+  y = seq(0, 1, by=m)
+  
+  #TODO calculate F^-1
+  #delta = F^-1(y)  
+  
+  #nu = seq(from=0, to=0, length=length(delta))
+  #r = length(nu)
   
   # -----calculate vector of freq-----
-  for (i in 2:(length(delta) - 1)){
-      for (j in mixed){
-      if ((delta[i] < j) && (j <= delta[i+1])){
-        nu[i] = nu[i] + 1
-      }
-    }  
-  }
-  for (j in mixed) {
-    if (j <= delta[1]) {
-      nu[1] = nu[1] + 1
-    }
-    if (j > delta[length(delta)]) {
-      nu[length(nu)] = nu[length(nu)] + 1
-    }
-  }
+  #for (i in 2:(r - 1)){
+  #  nu[i] <- sum((mixed > delta[i]) & (mixed <= delta[i + 1]))
+  #}
+ 
+  #nu[1] = sum(as.numeric((mixed <= delta[1])))
+  #nu[r] = sum(as.numeric((mixed > delta[r])))
   # -----calculate vector of freq-----
   
-  cat("Nu sum = ", sum(nu), "\n")
-  cat("Nu = ", nu, "\n")
+  #cat("Nu sum = ", sum(nu), "\n")
+  #cat("Nu = ", nu, "\n")
 ```
 
 ```{r}
-  pj = F(delta, p1=p1, p2=p2)
+  pj = 1/m
   P_n_nu = sum((nu-n*pj)^2 / (n*pj)) # Pearson's statistics mixed
   
   alpha = 0.05
